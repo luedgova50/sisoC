@@ -26,6 +26,7 @@
         public string Code { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]
+        [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
         [Display(Name = "Departamento")]
         public int StateID { get; set; }
 

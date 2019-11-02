@@ -21,13 +21,17 @@
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
-            State state = db.States.Find(id);
+
+            var state = db.States.Find(id);
+
             if (state == null)
             {
                 return HttpNotFound();
             }
+
             return View(state);
         }
 
@@ -38,16 +42,16 @@
         }
 
         // POST: States/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StateID,Name,Code")] State state)
+        public ActionResult Create(State state)
         {
             if (ModelState.IsValid)
             {
                 db.States.Add(state);
+
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -59,29 +63,34 @@
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
-            State state = db.States.Find(id);
+
+            var state = db.States.Find(id);
+
             if (state == null)
             {
                 return HttpNotFound();
             }
+
             return View(state);
         }
 
         // POST: States/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StateID,Name,Code")] State state)
+        public ActionResult Edit(State state)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(state).State = EntityState.Modified;
+
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
+
             return View(state);
         }
 
@@ -90,13 +99,17 @@
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
-            State state = db.States.Find(id);
+
+            var state = db.States.Find(id);
+
             if (state == null)
             {
                 return HttpNotFound();
             }
+
             return View(state);
         }
 
@@ -105,9 +118,12 @@
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            State state = db.States.Find(id);
+            var state = db.States.Find(id);
+
             db.States.Remove(state);
+
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

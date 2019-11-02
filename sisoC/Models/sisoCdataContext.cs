@@ -1,6 +1,8 @@
 ﻿namespace sisoC.Models
 {
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
+
     public class SisoCdataContext : DbContext
     {
         public SisoCdataContext() : base("DefaultConnection")
@@ -8,8 +10,17 @@
 
         }
 
-        public System.Data.Entity.DbSet<sisoC.Models.State> States { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.
+                Conventions.
+                Remove<
+                    OneToManyCascadeDeleteConvention>();
+        }
 
-        public System.Data.Entity.DbSet<sisoC.Models.City> Cities { get; set; }
+
+        public DbSet<State> States { get; set; }
+
+        public DbSet<City> Cities { get; set; }
     }
 }

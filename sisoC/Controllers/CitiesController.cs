@@ -1,5 +1,6 @@
 ﻿namespace sisoC.Controllers
 {
+    using sisoC.Helpers;
     using sisoC.Models;
     using System.Data.Entity;
     using System.Linq;
@@ -41,9 +42,9 @@
         public ActionResult Create()
         {
             ViewBag.StateID = 
-                new SelectList(
-                    db.States.
-                    OrderBy(de => de.Name), 
+                new SelectList( 
+                    ComboBoxStateHelper.
+                    GetStates(), 
                     "StateID", 
                     "Name");
 
@@ -66,8 +67,8 @@
 
             ViewBag.StateID = 
                 new SelectList(
-                    db.States.
-                    OrderBy(de => de.Name), 
+                    ComboBoxStateHelper.
+                    GetStates(), 
                 "StateID", 
                 "Name", 
                 city.StateID);
@@ -93,7 +94,8 @@
 
             ViewBag.StateID = 
                 new SelectList(
-                    db.States, 
+                    ComboBoxStateHelper.
+                    GetStates(), 
                     "StateID", 
                     "Name", 
                     city.StateID);
@@ -117,8 +119,8 @@
 
             ViewBag.StateID = 
                 new SelectList(
-                    db.States.
-                    OrderBy(de => de.Name), 
+                    ComboBoxStateHelper.
+                    GetStates(), 
                     "StateID", 
                     "Name", 
                     city.StateID);
@@ -141,6 +143,7 @@
             {
                 return HttpNotFound();
             }
+
             return View(city);
         }
 
