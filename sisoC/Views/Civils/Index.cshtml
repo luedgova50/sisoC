@@ -1,10 +1,10 @@
-﻿@model IEnumerable<sisoC.Models.DocumentType>
+﻿@model IEnumerable<sisoC.Models.Civil>
 
 @{
-    ViewBag.Title = "Tipo Documento";
+    ViewBag.Title = "Estado Civil";
 }
 
-<h2>Listado Tipos de Documento</h2>
+<h2>Listado de Estados Civiles</h2>
 
 <p>
     @Html.ActionLink("Crear Nuevo Registro", "Create", new { }, new { @class = "btn btn-primary btn-lg" })
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.DocumentTypeID }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.DocumentTypeID }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.DocumentTypeID }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CivilID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.CivilID }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CivilID }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

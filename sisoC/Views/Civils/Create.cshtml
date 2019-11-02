@@ -1,22 +1,20 @@
-﻿@model sisoC.Models.DocumentType
+﻿@model sisoC.Models.Civil
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Title = "Crear";
 }
 
-<h2>Editar Registro</h2>
+<h2>Crear Nuevo Registro</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Tipo Documento</h4>
+        <h4>Estado Civil</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.DocumentTypeID)
-
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -27,12 +25,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Grabar Registro" class="btn btn-primary btn-lg" />
-                @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-success btn-lg"})
+                <input type="submit" value="Crear Registro" class="btn btn-primary btn-lg" />
+                @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-success btn-lg" })
             </div>
         </div>
     </div>
 }
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

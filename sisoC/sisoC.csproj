@@ -182,7 +182,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
+    <Compile Include="Controllers\CivilsController.cs" />
     <Compile Include="Controllers\DocumentTypesController.cs" />
+    <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
@@ -195,7 +197,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Civil.cs" />
     <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\sisoCdataContext.cs" />
@@ -274,6 +278,16 @@
     <Content Include="Views\DocumentTypes\Details.cshtml" />
     <Content Include="Views\DocumentTypes\Edit.cshtml" />
     <Content Include="Views\DocumentTypes\Index.cshtml" />
+    <Content Include="Views\Genders\Create.cshtml" />
+    <Content Include="Views\Genders\Delete.cshtml" />
+    <Content Include="Views\Genders\Details.cshtml" />
+    <Content Include="Views\Genders\Edit.cshtml" />
+    <Content Include="Views\Genders\Index.cshtml" />
+    <Content Include="Views\Civils\Create.cshtml" />
+    <Content Include="Views\Civils\Delete.cshtml" />
+    <Content Include="Views\Civils\Details.cshtml" />
+    <Content Include="Views\Civils\Edit.cshtml" />
+    <Content Include="Views\Civils\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

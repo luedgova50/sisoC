@@ -24,5 +24,9 @@
         public DbSet<City> Cities { get; set; }
 
         public System.Data.Entity.DbSet<sisoC.Models.DocumentType> DocumentTypes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.Gender> Genders { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.Civil> Civils { get; set; }
     }
 }

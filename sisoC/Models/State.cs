@@ -22,7 +22,7 @@
             "The field {0} can contain maximun {1} and minimum {2} characters",
             MinimumLength = 1)]
         [Display(Name = "Código")]
-        [Index("State_Code_Index", IsUnique = true)]
+        //[Index("State_Code_Index", IsUnique = true)]
         public string Code { get; set; }
 
         public virtual ICollection<City> Cities { get; set; }
