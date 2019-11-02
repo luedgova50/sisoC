@@ -1,0 +1,40 @@
+﻿@model sisoC.Models.State
+
+@{
+    ViewBag.Title = "Departamento";
+}
+
+<h2>Eliminar Registro</h2>
+
+<h3>¿Está seguro de Querer Eliminar el Registro Seleccionado?</h3>
+<div>
+    <h4>Departamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Registro" class="btn btn-danger btn-lg" /> |
+            @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-success btn-lg" })
+        </div>
+    }
+</div>
