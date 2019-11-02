@@ -1,23 +1,24 @@
 ﻿namespace sisoC.Controllers
 {
-    using sisoC.Helpers;
-    using sisoC.Models;
+    
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+    using sisoC.Helpers;
+    using sisoC.Models;
 
-    public class StatesController : Controller
+    public class DocumentTypesController : Controller
     {
         private SisoCdataContext db = new SisoCdataContext();
 
-        // GET: States
+        // GET: DocumentTypes
         public ActionResult Index()
         {
-            return View(db.States.ToList());
+            return View(db.DocumentTypes.ToList());
         }
 
-        // GET: States/Details/5
+        // GET: DocumentTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -26,32 +27,33 @@
                     HttpStatusCode.BadRequest);
             }
 
-            var state = db.States.Find(id);
+            var documentType = 
+                db.DocumentTypes.Find(id);
 
-            if (state == null)
+            if (documentType == null)
             {
                 return HttpNotFound();
             }
 
-            return View(state);
+            return View(documentType);
         }
 
-        // GET: States/Create
+        // GET: DocumentTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: States/Create
+        // POST: DocumentTypes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(State state)
+        public ActionResult Create(DocumentType documentType)
         {
             if (ModelState.IsValid)
             {
-                db.States.Add(state);
+                db.DocumentTypes.Add(documentType);
 
-                var response = 
+                var response =
                     DBHelper.SaveChanges(db);
 
                 if (response.Succeeded)
@@ -61,15 +63,14 @@
 
                 ModelState.
                     AddModelError(
-                    string.Empty, 
+                    string.Empty,
                     response.Message);
-
             }
 
-            return View(state);
+            return View(documentType);
         }
 
-        // GET: States/Edit/5
+        // GET: DocumentTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,26 +79,29 @@
                     HttpStatusCode.BadRequest);
             }
 
-            var state = db.States.Find(id);
+            var documentType = 
+                db.DocumentTypes.Find(id);
 
-            if (state == null)
+            if (documentType == null)
             {
                 return HttpNotFound();
             }
 
-            return View(state);
+            return View(documentType);
         }
 
-        // POST: States/Edit/5
+        // POST: DocumentTypes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(State state)
+        public ActionResult Edit(DocumentType documentType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(state).State = EntityState.Modified;
+                db.Entry(documentType).
+                    State = 
+                    EntityState.Modified;
 
-                var response = 
+                var response =
                     DBHelper.SaveChanges(db);
 
                 if (response.Succeeded)
@@ -107,15 +111,14 @@
 
                 ModelState.
                     AddModelError(
-                    string.Empty, 
+                    string.Empty,
                     response.Message);
-
             }
 
-            return View(state);
+            return View(documentType);
         }
 
-        // GET: States/Delete/5
+        // GET: DocumentTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -124,25 +127,26 @@
                     HttpStatusCode.BadRequest);
             }
 
-            var state = db.States.Find(id);
+            var documentType = 
+                db.DocumentTypes.Find(id);
 
-            if (state == null)
+            if (documentType == null)
             {
                 return HttpNotFound();
             }
 
-            return View(state);
+            return View(documentType);
         }
 
-        // POST: States/Delete/5
+        // POST: DocumentTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var state = db.States.Find(id);
+            var documentType = 
+                db.DocumentTypes.Find(id);
 
-            db.States.Remove(state);
-
+            db.DocumentTypes.Remove(documentType);
             db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -154,6 +158,7 @@
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

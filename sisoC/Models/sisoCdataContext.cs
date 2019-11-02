@@ -22,5 +22,7 @@
         public DbSet<State> States { get; set; }
 
         public DbSet<City> Cities { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.DocumentType> DocumentTypes { get; set; }
     }
 }

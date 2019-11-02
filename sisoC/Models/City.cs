@@ -1,10 +1,7 @@
 ﻿namespace sisoC.Models
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Web;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class City
     {
@@ -23,6 +20,7 @@
             "The field {0} can contain maximun {1} and minimum {2} characters",
             MinimumLength = 1)]
         [Display(Name = "Código")]
+        [Index("City_Code_Index", IsUnique = true)]
         public string Code { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]

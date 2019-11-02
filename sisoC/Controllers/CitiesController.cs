@@ -60,9 +60,18 @@
             {
                 db.Cities.Add(city);
 
-                db.SaveChanges();
+                var response =
+                    DBHelper.SaveChanges(db);
 
-                return RedirectToAction("Index");
+                if (response.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.
+                    AddModelError(
+                    string.Empty,
+                    response.Message);
             }
 
             ViewBag.StateID = 
@@ -110,11 +119,22 @@
         {
             if (ModelState.IsValid)
             {
-                db.Entry(city).State = EntityState.Modified;
+                db.Entry(city).
+                    State = 
+                    EntityState.Modified;
 
-                db.SaveChanges();
+                var response =
+                    DBHelper.SaveChanges(db);
 
-                return RedirectToAction("Index");
+                if (response.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.
+                    AddModelError(
+                    string.Empty,
+                    response.Message);
             }
 
             ViewBag.StateID = 
