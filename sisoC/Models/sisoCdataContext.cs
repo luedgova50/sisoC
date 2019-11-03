@@ -42,5 +42,9 @@
         public DbSet<Arpr> Arprs { get; set; }
 
         public DbSet<Afpe> Afpes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.Pacient> Pacients { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.MilitaryService> MilitaryServices { get; set; }
     }
 }

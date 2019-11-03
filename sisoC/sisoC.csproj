@@ -192,6 +192,8 @@
     <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MilitaryServicesController.cs" />
+    <Compile Include="Controllers\PacientsController.cs" />
     <Compile Include="Controllers\ProfessionsController.cs" />
     <Compile Include="Controllers\SchoolLevelsController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
@@ -214,6 +216,7 @@
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MilitaryService.cs" />
     <Compile Include="Models\Pacient.cs" />
     <Compile Include="Models\Profession.cs" />
     <Compile Include="Models\SchoolLevel.cs" />
@@ -338,6 +341,16 @@
     <Content Include="Views\Afpes\Details.cshtml" />
     <Content Include="Views\Afpes\Edit.cshtml" />
     <Content Include="Views\Afpes\Index.cshtml" />
+    <Content Include="Views\MilitaryServices\Create.cshtml" />
+    <Content Include="Views\MilitaryServices\Delete.cshtml" />
+    <Content Include="Views\MilitaryServices\Details.cshtml" />
+    <Content Include="Views\MilitaryServices\Edit.cshtml" />
+    <Content Include="Views\MilitaryServices\Index.cshtml" />
+    <Content Include="Views\Pacients\Create.cshtml" />
+    <Content Include="Views\Pacients\Delete.cshtml" />
+    <Content Include="Views\Pacients\Details.cshtml" />
+    <Content Include="Views\Pacients\Edit.cshtml" />
+    <Content Include="Views\Pacients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

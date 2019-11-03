@@ -82,45 +82,45 @@
         [Display(Name = "Profesión")]
         public int ProfessionID { get; set; }
 
-        [StringLength(10,
+        [StringLength(5,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
-            MinimumLength = 3)]
+            MinimumLength = 1)]
         [Required(ErrorMessage = "You must enter the field {0}")]
         [Display(Name = "Tiempo Profesión")]
         public string TimeProfession { get; set; }
 
         [StringLength(50,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
-            MinimumLength = 3)]
+            MinimumLength = 1)]
         [Required(ErrorMessage = "You must enter the field {0}")]
         [Display(Name = "Cargo")]
         public string Possition { get; set; }
 
-        [StringLength(10,
+        [StringLength(3,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
-            MinimumLength = 3)]
+            MinimumLength = 1)]
         [Required(ErrorMessage = "You must enter the field {0}")]
         [Display(Name = "Antiguedad Meses")]
         public string OldMount { get; set; }
 
-        [StringLength(10,
+        [StringLength(2,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
-            MinimumLength = 3)]
+            MinimumLength = 1)]
         [Required(ErrorMessage = "You must enter the field {0}")]
         [Display(Name = "Antiguedad Años")]
         public string OldYear { get; set; }
 
-        [Range(typeof(bool), "true", "true",
-            ErrorMessage = "You gotta tick the box!")]
+        [Required(ErrorMessage = "You must enter a {0}")]
+        [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
         [Display(Name = "Servicio Militar")]
-        public bool MilitaryServices { get; set; }
+        public int MilitaryServiceID { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
         [Display(Name = "Categoria Licencia")]
         public int DriveLicenseID { get; set; }
 
-        [StringLength(50,
+        [StringLength(100,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 3)]
         [Required(ErrorMessage = "You must enter the field {0}")]
@@ -138,21 +138,21 @@
         public int CityID { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [StringLength(30,
+        [StringLength(20,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 3)]
         [Display(Name = "Teléfono")]
         public string Phone { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [StringLength(30,
+        [StringLength(20,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 3)]
         [Display(Name = "Móvil Uno")]
         public string Movil1 { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [StringLength(30,
+        [StringLength(20,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 3)]
         [Display(Name = "Movil Dos")]
@@ -179,14 +179,25 @@
         [Display(Name = "AFP")]
         public int AfpeID { get; set; }
 
-        [Display(Name = "Foto")]
-        public HttpPostedFileBase Photo { get; set; }
+        [DataType(DataType.ImageUrl)]
+        public string Photo { get; set; }
 
-        [Display(Name = "Firma")]
-        public HttpPostedFileBase Firm { get; set; }
+        [DataType(DataType.ImageUrl)]
+        public string Firm { get; set; }
 
         [NotMapped]
-        public string FullName { get { return string.Format("{0} {1}", FirstName, LastName); } }
+        [Display(Name = "Foto")]
+        public HttpPostedFileBase PhotoFile { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Firma")]
+        public HttpPostedFileBase FirmFile { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Nombres")]
+        public string FullName { 
+            get { return string.Format("{0} {1}", 
+                FirstName, LastName); } }
 
         public virtual DocumentType DocumentType { get; set; }
         public virtual Gender Gender { get; set; }
@@ -194,6 +205,7 @@
         public virtual FactorRh FactorRh { get; set; }
         public virtual SchoolLevel SchoolLevel { get; set; }
         public virtual Profession Profession { get; set; }
+        public virtual MilitaryService Military { get; set; }
         public virtual DriveLicense DriveLicense { get; set; }
         public virtual State State { get; set; }
         public virtual City City { get; set; }

@@ -1,0 +1,207 @@
+﻿@model IEnumerable<sisoC.Models.Pacient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Afpe.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arpr.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Civil.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DocumentType.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriveLicense.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Epsa.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FactorRh.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Military.Options)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profession.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolLevel.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Document)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthPlace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Family)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeProfession)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Possition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OldMount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OldYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movil1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movil2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Firm)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afpe.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arpr.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Civil.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DocumentType.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriveLicense.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Epsa.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FactorRh.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Military.Options)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profession.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolLevel.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Document)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthPlace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Family)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeProfession)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Possition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OldMount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OldYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movil1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movil2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firm)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PacientID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PacientID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PacientID })
+        </td>
+    </tr>
+}
+
+</table>
