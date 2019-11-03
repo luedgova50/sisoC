@@ -1,11 +1,12 @@
 ﻿namespace sisoC.Controllers
 {
-    using sisoC.Helpers;
-    using sisoC.Models;
+    
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+    using sisoC.Helpers;
+    using sisoC.Models;
 
     public class CitiesController : Controller
     {

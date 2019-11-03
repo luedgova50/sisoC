@@ -214,6 +214,7 @@
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pacient.cs" />
     <Compile Include="Models\Profession.cs" />
     <Compile Include="Models\SchoolLevel.cs" />
     <Compile Include="Models\sisoCdataContext.cs" />

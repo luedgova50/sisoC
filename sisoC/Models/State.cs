@@ -27,5 +27,7 @@
 
         public virtual ICollection<City> Cities { get; set; }
 
+        public virtual ICollection<Pacient> Pacients { get; set; }
+
     }
 }

@@ -1,11 +1,8 @@
 ﻿namespace sisoC.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Web;
 
     public class DriveLicense
     {
@@ -19,5 +16,7 @@
         [Display(Name = "Categoria Licencia")]
         [Index("DriveLicense_Description_Index", IsUnique = true)]
         public string Description { get; set; }
+
+        public virtual ICollection<Pacient> Pacients { get; set; }
     }
 }
