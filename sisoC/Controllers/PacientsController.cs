@@ -8,6 +8,7 @@
     using System.Net;
     using System.Web;
     using System.Web.Mvc;
+    using sisoC.Helpers;
     using sisoC.Models;
 
     public class PacientsController : Controller
