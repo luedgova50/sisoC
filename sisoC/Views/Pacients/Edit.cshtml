@@ -7,10 +7,10 @@
 <h2>Editar Registro</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Pacients", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Pacientes</h4>
     <hr />
@@ -29,6 +29,8 @@
     @Html.HiddenFor(model => model.EpsaID)
     @Html.HiddenFor(model => model.ArprID)
     @Html.HiddenFor(model => model.AfpeID)
+    @Html.HiddenFor(model => model.Photo)
+    @Html.HiddenFor(model => model.Firm)
 
     <div class="container-fluid">
         <div class="row">
@@ -95,13 +97,17 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <div class="col-md-4">
-                        @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
                     </div>
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+                        <div class='input-group date' id='datepicker' style="width:280px">
+                            @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                         @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
                     </div>
-
                 </div>
             </div>
         </div>
@@ -393,34 +399,59 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <div class="col-md-4">
-                        @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.PhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
                     </div>
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                    <div class="col-md-10">
+                        <div class="file-input-new">
+                            <div class="input-group" style="width:280px">
+                                <div tabindex="500" class="form-control file-caption">
+                                    <div class="file-caption-name" id="NombreArchivo">
+                                    </div>
+                                </div>
+                                <div class="input-group-btn" style="height:auto">
+                                    <div tabindex="500" class="btn btn-primary btn-file">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                        File Search...
+                                        @Html.TextBoxFor(modelo => modelo.PhotoFile, new { type = "file", id = "files" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <div class="col-md-4">
-                        @Html.LabelFor(model => model.Firm, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.FirmFile, htmlAttributes: new { @class = "control-label col-md-2" })
                     </div>
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Firm, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Firm, "", new { @class = "text-danger" })
+                    <div class="col-md-10">
+                        <div class="file-input-new">
+                            <div class="input-group" style="width:280px">
+                                <div tabindex="500" class="form-control file-caption">
+                                    <div class="file-caption-name" id="NombreArchivo">
+                                    </div>
+                                </div>
+                                <div class="input-group-btn" style="height:auto">
+                                    <div tabindex="500" class="btn btn-primary btn-file">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                        File Search...
+                                        @Html.TextBoxFor(modelo => modelo.FirmFile, new { type = "file", id = "files" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Grabar Registro" class="btn btn-primary btn-lg" />
-            @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-success btn-lg"})
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Grabar Registro" class="btn btn-primary btn-lg" />
+                @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-success btn-lg" })
+            </div>
         </div>
     </div>
 </div>
@@ -428,6 +459,15 @@
 
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script type="text/javascript">
+            var Url = '@Url.Action("GetCities", "Generic")';
+            </script>
+            <script type="text/javascript">
+                $(function () {
+                    $('#datepicker').datetimepicker({ format: 'YYYY/MM/DD' });
+                });
+            </script>
+
+        }
