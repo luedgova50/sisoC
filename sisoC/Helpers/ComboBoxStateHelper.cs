@@ -180,6 +180,19 @@
             return afps.OrderBy(d => d.Description).ToList();
         }
 
+        public static List<UserRoles> GetRoles()
+        {
+            var roles = db.UserRoles.ToList();
+
+            roles.Add(new UserRoles
+            {
+                UserRolesID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return roles.OrderBy(d => d.Description).ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();

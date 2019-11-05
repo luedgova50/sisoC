@@ -33,6 +33,8 @@
 
         public virtual ICollection<Pacient> Pacients { get; set; }
 
+        public virtual ICollection<Users> Users { get; set; }
+
 
     }
 }

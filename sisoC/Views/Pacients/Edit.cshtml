@@ -97,7 +97,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <div class="col-md-4">
-                        @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-10">
                         <div class='input-group date' id='datepicker' style="width:280px">
@@ -405,8 +405,7 @@
                         <div class="file-input-new">
                             <div class="input-group" style="width:280px">
                                 <div tabindex="500" class="form-control file-caption">
-                                    <div class="file-caption-name" id="NombreArchivo">
-                                    </div>
+                                    <div class="file-caption-name" id="NombreArchivo"></div>
                                 </div>
                                 <div class="input-group-btn" style="height:auto">
                                     <div tabindex="500" class="btn btn-primary btn-file">
@@ -429,8 +428,7 @@
                         <div class="file-input-new">
                             <div class="input-group" style="width:280px">
                                 <div tabindex="500" class="form-control file-caption">
-                                    <div class="file-caption-name" id="NombreArchivo">
-                                    </div>
+                                    <div class="file-caption-name" id="NombreArchivo"></div>
                                 </div>
                                 <div class="input-group-btn" style="height:auto">
                                     <div tabindex="500" class="btn btn-primary btn-file">
@@ -443,7 +441,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -459,15 +456,13 @@
 
 
 
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-            <script type="text/javascript">
-            var Url = '@Url.Action("GetCities", "Generic")';
-            </script>
-            <script type="text/javascript">
-                $(function () {
-                    $('#datepicker').datetimepicker({ format: 'YYYY/MM/DD' });
-                });
-            </script>
-
-        }
+ @section Scripts {
+   @Scripts.Render("~/bundles/jqueryval")
+   <script type="text/javascript">
+      var Url = '@Url.Action("GetCities", "Generic")';
+            
+       $(function () {
+         $('#datepicker').datetimepicker({ format: 'YYYY/MM/DD' });
+        });
+    </script>
+}

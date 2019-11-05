@@ -46,5 +46,7 @@
         public System.Data.Entity.DbSet<sisoC.Models.Pacient> Pacients { get; set; }
 
         public System.Data.Entity.DbSet<sisoC.Models.MilitaryService> MilitaryServices { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.UserRoles> UserRoles { get; set; }
     }
 }

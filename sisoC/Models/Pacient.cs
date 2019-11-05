@@ -19,6 +19,7 @@
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 5)]
         [Required(ErrorMessage = "You must enter the field {0}")]
+        [Index("Pacient_Document_Index", IsUnique = true)]
         [Display(Name = "Número Documento")]
         public string Document { get; set; }
 
@@ -40,10 +41,8 @@
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
         [Display(Name = "Genero")]
         public int GenderID { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
-            ApplyFormatInEditMode = true)]
+        
+        
         [Required(ErrorMessage = "You must enter a {0}")]
         [Display(Name = "Fecha Nacimiento")]
         public DateTime BirthDay { get; set; }

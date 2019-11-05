@@ -364,9 +364,9 @@
                     </dt>
 
                     <dd>
-                        @if (!string.IsNullOrEmpty(ite))
+                        @if (!string.IsNullOrEmpty(Model.Photo))
                         {
-                            <img src="@Url.Content(item.Logo)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+                            <img src="@Url.Content(Model.Photo)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
                         }
 
                     </dd>
@@ -379,9 +379,9 @@
                     </dt>
 
                     <dd>
-                        @if (!string.IsNullOrEmpty(item.Logo))
+                        @if (!string.IsNullOrEmpty(Model.Firm))
                         {
-                            <img src="@Url.Content(item.Logo)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+                            <img src="@Url.Content(Model.Firm)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
                         }
 
                     </dd>
