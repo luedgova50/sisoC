@@ -42,7 +42,8 @@
         [Display(Name = "Genero")]
         public int GenderID { get; set; }
         
-        
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", 
+            ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "You must enter a {0}")]
         [Display(Name = "Fecha Nacimiento")]
         public DateTime BirthDay { get; set; }

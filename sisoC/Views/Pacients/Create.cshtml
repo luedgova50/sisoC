@@ -12,21 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Pacientes</h4>
-        @Html.HiddenFor(model => model.DocumentTypeID)
-        @Html.HiddenFor(model => model.GenderID)
-        @Html.HiddenFor(model => model.CivilID)
-        @Html.HiddenFor(model => model.FactorRhID)
-        @Html.HiddenFor(model => model.SchoolLevelID)
-        @Html.HiddenFor(model => model.ProfessionID)
-        @Html.HiddenFor(model => model.MilitaryServiceID)
-        @Html.HiddenFor(model => model.DriveLicenseID)
-        @Html.HiddenFor(model => model.StateID)
-        @Html.HiddenFor(model => model.CityID)
-        @Html.HiddenFor(model => model.EpsaID)
-        @Html.HiddenFor(model => model.ArprID)
-        @Html.HiddenFor(model => model.AfpeID)
-
+        <h4>Pacientes</h4> 
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="container-fluid">
@@ -97,7 +83,7 @@
                             @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
                         </div>
                         <div class="col-md-10">
-                            <div class='input-group date' id='datepicker' style="width:280px">
+                            <div class='input-group date' id='datepicker' style="width:180px">
                                 @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -106,7 +92,6 @@
                             @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -132,7 +117,6 @@
                             @Html.DropDownList("CivilID", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.CivilID, "", new { @class = "text-danger" })
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -144,7 +128,6 @@
                             @Html.EditorFor(model => model.Family, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Family, "", new { @class = "text-danger" })
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -171,7 +154,6 @@
                             @Html.DropDownList("SchoolLevelID", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.SchoolLevelID, "", new { @class = "text-danger" })
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -183,7 +165,6 @@
                             @Html.DropDownList("ProfessionID", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.ProfessionID, "", new { @class = "text-danger" })
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -325,7 +306,6 @@
                             @Html.EditorFor(model => model.Movil1, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Movil1, "", new { @class = "text-danger" })
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -337,7 +317,6 @@
                             @Html.EditorFor(model => model.Movil2, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Movil2, "", new { @class = "text-danger" })
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -458,8 +437,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         var Url = '@Url.Action("GetCities", "Generic")';
-    </script>
-    <script type="text/javascript">
+    
         $(function () {
             $('#datepicker').datetimepicker({ format: 'YYYY/MM/DD' });
         });
