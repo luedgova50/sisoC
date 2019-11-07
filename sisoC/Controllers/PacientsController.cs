@@ -8,13 +8,14 @@
     using System.Web.UI.WebControls;
     using sisoC.Helpers;
     using sisoC.Models;
+    using PagedList;
 
     public class PacientsController : Controller
     {
         private SisoCdataContext db = new SisoCdataContext();
 
         // GET: Pacients
-        public ActionResult Index()
+        public ActionResult Index(int? page = null)
         {
             var pacients = 
                 db.Pacients.
@@ -32,7 +33,12 @@
                 Include(p => p.SchoolLevel).
                 Include(p => p.State);
 
-            return View(pacients.ToList());
+            page = (page ?? 1);
+
+            return View(db.Pacients.OrderBy(
+                pc => pc.FirstName).
+                ThenBy(pc => pc.LastName)
+                .ToPagedList((int)page, 6));
         }
 
         // GET: Pacients/Details/5
@@ -131,7 +137,7 @@
         public ActionResult Create(Pacient pacient)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 db.Pacients.Add(pacient);
 
                 var response =
@@ -146,10 +152,9 @@
                     AddModelError(
                     string.Empty,
                     response.Message);
-                                
+                                                
                 if (pacient.PhotoFile != null)
-                {
-                    //var pic = string.Empty;
+                {                   
 
                     var folder = "~/Content/Photos";
 
@@ -181,35 +186,35 @@
 
                 if (pacient.FirmFile != null)
                 {
-                    //var pic2 = string.Empty;
-
                     var folder2 = "~/Content/Firms";
 
-                    var file = string.Format("{0}.jpg",
+                    var file2 = string.Format("{0}.jpg",
                             pacient.PacientID);
 
-                    var response2 =
+                    var response3 =
                         FileImageUpLoad.
                         UploadPhoto(
                             pacient.
                             FirmFile,
                             folder2, 
-                            file);
+                            file2);
 
-                    if (response2)
+                    if (response3)
                     {
                         var pic2 = string.
                           Format("{0}/{1}",
-                          folder2, file);
+                          folder2, file2);
 
                         pacient.Firm = pic2;
 
                         db.Entry(pacient).State =
                             EntityState.Modified;
 
-                        db.SaveChanges();
+                       db.SaveChanges();
                     }
-                }                
+                }
+
+               
             }
 
             ViewBag.AfpeID = 
@@ -401,8 +406,7 @@
             {              
 
                 if (pacient.PhotoFile != null)
-                {
-                    //var pic = string.Empty;
+                {                  
 
                     var folder = "~/Content/Photos";
 
@@ -426,25 +430,25 @@
                 } 
 
                 if (pacient.FirmFile != null)
-                {
-                    //var pic2 = string.Empty;
-
+                {                    
                     var folder2 = "~/Content/Firms";
 
-                    var file = string.Format("{0}.jpg", pacient.PacientID);
+                    var file2 = 
+                        string.Format("{0}.jpg", 
+                        pacient.PacientID);
 
-                    var response2 =
+                    var response3 =
                         FileImageUpLoad.
                         UploadPhoto(
                             pacient.
                             FirmFile,
                             folder2,
-                            file);
+                            file2);
 
-                    if (response2)
+                    if (response3)
                     {
                         var pic2 = string.Format("{0}/{1}",
-                        folder2, file);
+                        folder2, file2);
 
                         pacient.Firm = pic2;
                     }

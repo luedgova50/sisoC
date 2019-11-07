@@ -1,0 +1,196 @@
+﻿@model sisoC.Models.Users
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles del Registro</h2>
+
+<div>
+    <h4>Usuarios</h4>
+	<hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DocumentType.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DocumentType.Description)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Document)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Document)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.State.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.State.Name)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.City.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.City.Name)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Movil1)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Movil1)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Movil2)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Movil2)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EMail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EMail)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhotoUsers)
+                    </dt>
+
+                    <dd>
+                        @if (!string.IsNullOrEmpty(Model.PhotoUsers))
+                        {
+                            <img src="@Url.Content(Model.PhotoUsers)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+                        }
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirmUsers)
+                    </dt>
+
+                    <dd>
+                        @if (!string.IsNullOrEmpty(Model.FirmUsers))
+                        {
+                            <img src="@Url.Content(Model.FirmUsers)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.UsersID }, new { @class = "btn btn-warning btn-lg" }) |
+    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-success btn-lg" })
+</p>

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<sisoC.Models.Pacient>
+﻿@model PagedList.IPagedList<sisoC.Models.Pacient>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Pacientes";
@@ -12,16 +13,16 @@
 <table class="table table-bordered table-hover">
     <tr>        
         <th>
-            @Html.DisplayNameFor(model => model.DocumentType.Description)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DocumentType.Description)
         </th>        
         <th>
-            @Html.DisplayNameFor(model => model.Document)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Document)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FullName)
         </th>  
         <th>
-            @Html.DisplayNameFor(model => model.Photo)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Photo)
         </th>
         <th></th>
     </tr>
@@ -52,3 +53,11 @@
 }
 
 </table>
+Página: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), de: @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder =
+    ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))

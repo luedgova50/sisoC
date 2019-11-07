@@ -13,7 +13,7 @@
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 10)]
         [Required(ErrorMessage = "You must enter the field {0}")]
-        [Display(Name = "E-Mail")]
+        [Display(Name = "User Name")]
         [Index("Users_UserName_Index", 2, IsUnique = true)]
         [DataType(DataType.EmailAddress)]
         public string UserName { get; set; }
@@ -89,18 +89,18 @@
         [Display(Name = "E-Mail")]
         public string EMail { get; set; }
 
+        [Display(Name = "Foto")]
         [DataType(DataType.ImageUrl)]
         public string PhotoUsers { get; set; }
 
+        [Display(Name = "Firma")]
         [DataType(DataType.ImageUrl)]
         public string FirmUsers { get; set; }
 
         [NotMapped]
-        [Display(Name = "Foto")]
         public HttpPostedFileBase PhotoUsersFile { get; set; }
 
         [NotMapped]
-        [Display(Name = "Firma")]
         public HttpPostedFileBase FirmUsersFile { get; set; }
 
         [NotMapped]

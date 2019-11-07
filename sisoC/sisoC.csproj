@@ -207,6 +207,7 @@
     <Compile Include="Controllers\SchoolLevelsController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -427,10 +428,16 @@
     <Content Include="Views\UserRoles\Details.cshtml" />
     <Content Include="Views\UserRoles\Edit.cshtml" />
     <Content Include="Views\UserRoles\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Firms\" />
+    <Folder Include="Content\FirmUsers\" />
     <Folder Include="Content\Photos\" />
     <Folder Include="Content\Users\" />
     <Folder Include="Views\Generic\" />
