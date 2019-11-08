@@ -1,23 +1,16 @@
 ﻿namespace sisoC.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
     using System.Web;
 
-    public class Users
+    public class Enterprise
     {
         [Key]
-        public int UsersID { get; set; }
-
-        [StringLength(256,
-            ErrorMessage = "The field {0} must contain between {2} and {1} characters",
-            MinimumLength = 10)]
-        [Required(ErrorMessage = "You must enter the field {0}")]
-        [Display(Name = "User Name")]
-        [Index("Users_UserName_Index", 2, IsUnique = true)]
-        [DataType(DataType.EmailAddress)]
-        public string UserName { get; set; }
+        public int EnterpriseID { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
@@ -28,23 +21,23 @@
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 5)]
         [Required(ErrorMessage = "You must enter the field {0}")]
-        [Index("Users_Document_Index", 1, IsUnique = true)]
+        [Index("Enterprise_Document_Index", IsUnique = true)]
         [Display(Name = "Número Documento")]
         public string Document { get; set; }
 
-        [StringLength(30,
+        [StringLength(150,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 3)]
         [Required(ErrorMessage = "You must enter the field {0}")]
-        [Display(Name = "Nombre(s)")]
-        public string FirstName { get; set; }
+        [Display(Name = "Razón Social")]
+        public string BusinessName { get; set; }
 
-        [StringLength(30,
+        [StringLength(150,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
             MinimumLength = 3)]
         [Required(ErrorMessage = "You must enter the field {0}")]
-        [Display(Name = "Apellido(s)")]
-        public string LastName { get; set; }
+        [Display(Name = "Nombre Contacto")]
+        public string ContactName { get; set; }
 
         [StringLength(100,
             ErrorMessage = "The field {0} must contain between {2} and {1} characters",
@@ -89,36 +82,22 @@
             ErrorMessage = "E-mail is not valid")]
         [Display(Name = "E-Mail")]
         public string EMail { get; set; }
+        
+        [DataType(DataType.Url)]
+        [Display(Name = "Web Site")]
+        [RegularExpression(@"^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$",
+            ErrorMessage = "URL is not valid")]
+        public string URL { get; set; }
 
-        [Display(Name = "Foto")]
-        [DataType(DataType.ImageUrl)]
-        public string PhotoUsers { get; set; }
-
-        [Display(Name = "Firma")]
-        [DataType(DataType.ImageUrl)]
-        public string FirmUsers { get; set; }
-
-        [NotMapped]
-        public HttpPostedFileBase PhotoUsersFile { get; set; }
-
-        [NotMapped]
-        public HttpPostedFileBase FirmUsersFile { get; set; }
-
-        [NotMapped]
-        [Display(Name = "Nombres")]
-        public string FullName
-        {
-            get
-            {
-                return string.Format("{0} {1}",
-              FirstName, LastName);
-            }
-        }
+        [StringLength(20,
+            ErrorMessage = "The field {0} must contain between {2} and {1} characters",
+            MinimumLength = 3)]
+        [Display(Name = "Forma Pago")]
+        [Required(ErrorMessage = "You must enter a {0}")]
+        public string TypePay { get; set; }
 
         public virtual DocumentType DocumentType { get; set; }
         public virtual State State { get; set; }
-        public virtual City City { get; set; }
-
-        public virtual ICollection<TypeLogin> TypeLogins { get; set; }
+        public virtual City City { get; set; } 
     }
 }

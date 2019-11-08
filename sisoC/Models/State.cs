@@ -31,5 +31,6 @@
 
         public virtual ICollection<Users> Users { get; set; }
 
+        public virtual ICollection<Enterprise> Enterprises { get; set; }
     }
 }

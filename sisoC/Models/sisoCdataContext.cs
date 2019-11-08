@@ -43,12 +43,18 @@
 
         public DbSet<Afpe> Afpes { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.Pacient> Pacients { get; set; }
+        public DbSet<Pacient> Pacients { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.MilitaryService> MilitaryServices { get; set; }
+        public DbSet<MilitaryService> MilitaryServices { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.UserRoles> UserRoles { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.Users> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
+
+        public DbSet<University> Universities { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.TypeLogin> TypeLogins { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.Enterprise> Enterprises { get; set; }
     }
 }

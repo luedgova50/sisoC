@@ -193,6 +193,32 @@
             return roles.OrderBy(d => d.Description).ToList();
         }
 
+        public static List<Users> GetUsers()
+        {
+            var users = db.Users.ToList();
+
+            users.Add(new Users
+            {
+                UsersID = 0,
+                LastName = "[Seleccionar una Opción...]",
+            });
+
+            return users.OrderBy(d => d.LastName).ToList();
+        }
+
+        public static List<University> GetUniversities()
+        {
+            var university = db.Universities.ToList();
+
+            university.Add(new University
+            {
+                UniversityID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return university.OrderBy(d => d.Description).ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();

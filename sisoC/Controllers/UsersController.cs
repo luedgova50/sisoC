@@ -113,7 +113,7 @@
                         db.Entry(users).State =
                             EntityState.Modified;
 
-                        //db.SaveChanges();
+                        db.SaveChanges();
                     }
                 }
 
@@ -144,7 +144,7 @@
                         db.Entry(users).State =
                             EntityState.Modified;
 
-                        // db.SaveChanges();
+                        db.SaveChanges();
                     }
                 }
 
@@ -266,7 +266,7 @@
                         db.Entry(users).State =
                             EntityState.Modified;
 
-                        //db.SaveChanges();
+                        db.SaveChanges();
                     }
                 }
 

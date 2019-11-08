@@ -1,0 +1,67 @@
+﻿@model PagedList.IPagedList<sisoC.Models.Enterprise>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Empresa";
+}
+
+<h2>Listado de Empresas</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Registro", "Create", new { }, new { @class = "btn btn-primary btn-lg" })
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DocumentType.Description)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Document)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().BusinessName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().TypePay)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>            
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentType.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Document)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypePay)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.EnterpriseID }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.EnterpriseID }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.EnterpriseID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+Página: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), de: @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder =
+    ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))

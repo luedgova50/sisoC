@@ -195,6 +195,7 @@
     <Compile Include="Controllers\CivilsController.cs" />
     <Compile Include="Controllers\DocumentTypesController.cs" />
     <Compile Include="Controllers\DriveLicensesController.cs" />
+    <Compile Include="Controllers\EnterprisesController.cs" />
     <Compile Include="Controllers\EpsasController.cs" />
     <Compile Include="Controllers\FactorRhsController.cs" />
     <Compile Include="Controllers\GendersController.cs" />
@@ -206,6 +207,8 @@
     <Compile Include="Controllers\ProfessionsController.cs" />
     <Compile Include="Controllers\SchoolLevelsController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
+    <Compile Include="Controllers\TypeLoginsController.cs" />
+    <Compile Include="Controllers\UniversitiesController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,6 +228,7 @@
     <Compile Include="Models\Civil.cs" />
     <Compile Include="Models\DocumentType.cs" />
     <Compile Include="Models\DriveLicense.cs" />
+    <Compile Include="Models\Enterprise.cs" />
     <Compile Include="Models\Epsa.cs" />
     <Compile Include="Models\FactorRh.cs" />
     <Compile Include="Models\Gender.cs" />
@@ -236,6 +240,8 @@
     <Compile Include="Models\SchoolLevel.cs" />
     <Compile Include="Models\sisoCdataContext.cs" />
     <Compile Include="Models\State.cs" />
+    <Compile Include="Models\TypeLogin.cs" />
+    <Compile Include="Models\University.cs" />
     <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -433,9 +439,25 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Universities\Create.cshtml" />
+    <Content Include="Views\Universities\Delete.cshtml" />
+    <Content Include="Views\Universities\Details.cshtml" />
+    <Content Include="Views\Universities\Edit.cshtml" />
+    <Content Include="Views\Universities\Index.cshtml" />
+    <Content Include="Views\TypeLogins\Create.cshtml" />
+    <Content Include="Views\TypeLogins\Delete.cshtml" />
+    <Content Include="Views\TypeLogins\Details.cshtml" />
+    <Content Include="Views\TypeLogins\Edit.cshtml" />
+    <Content Include="Views\TypeLogins\Index.cshtml" />
+    <Content Include="Views\Enterprises\Create.cshtml" />
+    <Content Include="Views\Enterprises\Delete.cshtml" />
+    <Content Include="Views\Enterprises\Details.cshtml" />
+    <Content Include="Views\Enterprises\Edit.cshtml" />
+    <Content Include="Views\Enterprises\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\FirmAcces\" />
     <Folder Include="Content\Firms\" />
     <Folder Include="Content\FirmUsers\" />
     <Folder Include="Content\Photos\" />
