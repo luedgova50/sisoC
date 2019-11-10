@@ -1,14 +1,12 @@
 ﻿namespace sisoC.Controllers
-{
-    
+{    
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-    using System.Web.UI.WebControls;
+    using PagedList;
     using sisoC.Helpers;
     using sisoC.Models;
-    using PagedList;
 
     public class PacientsController : Controller
     {

@@ -1,22 +1,18 @@
 ﻿namespace sisoC.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
+    using PagedList;
+    using sisoC.Helpers;
+    using sisoC.Models;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
-    using System.Web;
     using System.Web.Mvc;
-    using sisoC.Models;
-    using PagedList;
-    using sisoC.Helpers;
 
     public class EnterprisesController : Controller
     {
         private SisoCdataContext db = new SisoCdataContext();
 
-        // GET: /Enterprises/
+        // GET: Enterprises
         public ActionResult Index(int? page = null)
         {
             var enterprises = 
@@ -33,7 +29,7 @@
                 .ToPagedList((int)page, 6));
         }
 
-        // GET: /Enterprises/Details/5
+        // GET: Enterprises/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,34 +48,31 @@
             return View(enterprise);
         }
 
-        // GET: /Enterprises/Create
+        // GET: Enterprises/Create
         public ActionResult Create()
         {
             ViewBag.CityID = 
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetCities(0), 
+                    ComboBoxStateHelper.GetCities(0), 
                     "CityID", 
                     "Name");
 
             ViewBag.DocumentTypeID = 
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetDocumentTypes(), 
+                    ComboBoxStateHelper.GetDocumentTypes(), 
                     "DocumentTypeID", 
                     "Description");
 
             ViewBag.StateID = 
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetStates(), 
+                    ComboBoxStateHelper.GetStates(), 
                     "StateID", 
                     "Name");
 
             return View();
         }
 
-        // POST: /Enterprises/Create
+        // POST: Enterprises/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Enterprise enterprise)
@@ -89,7 +82,7 @@
                 db.Enterprises.Add(enterprise);
 
                 var response =
-                   DBHelper.SaveChanges(db);
+                    DBHelper.SaveChanges(db);
 
                 if (response.Succeeded)
                 {
@@ -105,24 +98,21 @@
             ViewBag.CityID = 
                 new SelectList(
                     ComboBoxStateHelper.
-                    GetCities(
-                    enterprise.StateID), 
+                    GetCities(enterprise.StateID), 
                     "CityID", 
                     "Name", 
                     enterprise.CityID);
 
             ViewBag.DocumentTypeID = 
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetDocumentTypes(), 
+                    ComboBoxStateHelper.GetDocumentTypes(), 
                     "DocumentTypeID", 
                     "Description", 
                     enterprise.DocumentTypeID);
 
             ViewBag.StateID = 
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetStates(), 
+                    ComboBoxStateHelper.GetStates(), 
                     "StateID", 
                     "Name", 
                     enterprise.StateID);
@@ -130,7 +120,7 @@
             return View(enterprise);
         }
 
-        // GET: /Enterprises/Edit/5
+        // GET: Enterprises/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -146,35 +136,32 @@
                 return HttpNotFound();
             }
 
-            ViewBag.CityID = 
+            ViewBag.CityID =
                 new SelectList(
                     ComboBoxStateHelper.
-                    GetCities(
-                    enterprise.StateID), 
-                    "CityID", 
-                    "Name", 
+                    GetCities(enterprise.StateID),
+                    "CityID",
+                    "Name",
                     enterprise.CityID);
 
-            ViewBag.DocumentTypeID = 
+            ViewBag.DocumentTypeID =
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetDocumentTypes(), 
-                    "DocumentTypeID", 
-                    "Description", 
+                    ComboBoxStateHelper.GetDocumentTypes(),
+                    "DocumentTypeID",
+                    "Description",
                     enterprise.DocumentTypeID);
 
-            ViewBag.StateID = 
+            ViewBag.StateID =
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetStates(), 
-                    "StateID", 
-                    "Name", 
+                    ComboBoxStateHelper.GetStates(),
+                    "StateID",
+                    "Name",
                     enterprise.StateID);
 
             return View(enterprise);
         }
 
-        // POST: /Enterprises/Edit/5
+        // POST: Enterprises/Edit/5.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Enterprise enterprise)
@@ -198,35 +185,32 @@
                     response.Message);
             }
 
-            ViewBag.CityID = 
+            ViewBag.CityID =
                 new SelectList(
                     ComboBoxStateHelper.
-                    GetCities(
-                    enterprise.StateID), 
-                    "CityID", 
-                    "Name", 
+                    GetCities(enterprise.StateID),
+                    "CityID",
+                    "Name",
                     enterprise.CityID);
 
-            ViewBag.DocumentTypeID = 
+            ViewBag.DocumentTypeID =
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetDocumentTypes(), 
-                    "DocumentTypeID", 
-                    "Description", 
+                    ComboBoxStateHelper.GetDocumentTypes(),
+                    "DocumentTypeID",
+                    "Description",
                     enterprise.DocumentTypeID);
 
-            ViewBag.StateID = 
+            ViewBag.StateID =
                 new SelectList(
-                    ComboBoxStateHelper.
-                    GetStates(), 
-                    "StateID", 
-                    "Name", 
+                    ComboBoxStateHelper.GetStates(),
+                    "StateID",
+                    "Name",
                     enterprise.StateID);
 
             return View(enterprise);
         }
 
-        // GET: /Enterprises/Delete/5
+        // GET: Enterprises/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -245,7 +229,7 @@
             return View(enterprise);
         }
 
-        // POST: /Enterprises/Delete/5
+        // POST: Enterprises/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
