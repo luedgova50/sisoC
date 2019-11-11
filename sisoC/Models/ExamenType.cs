@@ -1,11 +1,8 @@
 ﻿namespace sisoC.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Web;
 
     public class ExamenType
     {
@@ -19,5 +16,7 @@
         [Display(Name = "Tipo Examen")]
         [Index("ExamenType_Description_Index", IsUnique = true)]
         public string Description { get; set; }
+
+        public virtual ICollection<Examen> Examens { get; set; }
     }
 }

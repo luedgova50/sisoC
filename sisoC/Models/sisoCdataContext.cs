@@ -68,5 +68,11 @@
         public System.Data.Entity.DbSet<sisoC.Models.ExFono> ExFonoes { get; set; }
 
         public System.Data.Entity.DbSet<sisoC.Models.ExPsico> ExPsicoes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.ExMedico> ExMedicoes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.ExActivo> ExActivoes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.Examen> Examen { get; set; }
     }
 }

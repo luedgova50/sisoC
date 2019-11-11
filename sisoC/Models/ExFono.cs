@@ -1,11 +1,8 @@
 ﻿namespace sisoC.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Web;
 
     public class ExFono
     {
@@ -19,5 +16,7 @@
         [Display(Name = "Opción Fonoaudiologico")]
         [Index("ExFono_Description_Index", IsUnique = true)]
         public string Description { get; set; }
+
+        public virtual ICollection<Examen> Examens { get; set; }
     }
 }

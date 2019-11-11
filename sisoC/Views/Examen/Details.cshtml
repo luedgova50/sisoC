@@ -1,0 +1,114 @@
+﻿@model sisoC.Models.Examen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Examen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Enterprise.Document)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enterprise.Document)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExActivo.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExActivo.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExamenLevel.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamenLevel.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExamenType.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamenType.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExFono.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExFono.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExMedico.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExMedico.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExOpto.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExOpto.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExPsico.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExPsico.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherExam.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherExam.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacient.Document)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pacient.Document)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExamenID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

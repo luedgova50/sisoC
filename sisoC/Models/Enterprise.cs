@@ -1,11 +1,8 @@
 ﻿namespace sisoC.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Web;
 
     public class Enterprise
     {
@@ -98,6 +95,8 @@
 
         public virtual DocumentType DocumentType { get; set; }
         public virtual State State { get; set; }
-        public virtual City City { get; set; } 
+        public virtual City City { get; set; }
+
+        public virtual ICollection<Examen> Examens { get; set; }
     }
 }

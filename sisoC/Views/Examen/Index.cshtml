@@ -1,0 +1,99 @@
+﻿@model IEnumerable<sisoC.Models.Examen>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Enterprise.Document)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExActivo.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamenLevel.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamenType.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExFono.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExMedico.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExOpto.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExPsico.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherExam.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pacient.Document)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enterprise.Document)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExActivo.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamenLevel.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamenType.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExFono.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExMedico.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExOpto.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExPsico.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherExam.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pacient.Document)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExamenID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ExamenID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExamenID })
+        </td>
+    </tr>
+}
+
+</table>

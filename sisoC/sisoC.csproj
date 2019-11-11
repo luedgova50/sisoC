@@ -197,9 +197,12 @@
     <Compile Include="Controllers\DriveLicensesController.cs" />
     <Compile Include="Controllers\EnterprisesController.cs" />
     <Compile Include="Controllers\EpsasController.cs" />
+    <Compile Include="Controllers\ExActivoesController.cs" />
+    <Compile Include="Controllers\ExamenController.cs" />
     <Compile Include="Controllers\ExamenLevelsController.cs" />
     <Compile Include="Controllers\ExamenTypesController.cs" />
     <Compile Include="Controllers\ExFonoesController.cs" />
+    <Compile Include="Controllers\ExMedicoesController.cs" />
     <Compile Include="Controllers\ExOptoesController.cs" />
     <Compile Include="Controllers\ExPsicoesController.cs" />
     <Compile Include="Controllers\FactorRhsController.cs" />
@@ -236,9 +239,12 @@
     <Compile Include="Models\DriveLicense.cs" />
     <Compile Include="Models\Enterprise.cs" />
     <Compile Include="Models\Epsa.cs" />
+    <Compile Include="Models\ExActivo.cs" />
+    <Compile Include="Models\Examen.cs" />
     <Compile Include="Models\ExamenLevel.cs" />
     <Compile Include="Models\ExamenType.cs" />
     <Compile Include="Models\ExFono.cs" />
+    <Compile Include="Models\ExMedico.cs" />
     <Compile Include="Models\ExOpto.cs" />
     <Compile Include="Models\ExPsico.cs" />
     <Compile Include="Models\FactorRh.cs" />
@@ -496,6 +502,26 @@
     <Content Include="Views\ExPsicoes\Details.cshtml" />
     <Content Include="Views\ExPsicoes\Edit.cshtml" />
     <Content Include="Views\ExPsicoes\Index.cshtml" />
+    <Content Include="Views\ExMedicoes\Create.cshtml" />
+    <Content Include="Views\ExMedicoes\Delete.cshtml" />
+    <Content Include="Views\ExMedicoes\Details.cshtml" />
+    <Content Include="Views\ExMedicoes\Edit.cshtml" />
+    <Content Include="Views\ExMedicoes\Index.cshtml" />
+    <Content Include="Views\ExMedicoes1\Create.cshtml" />
+    <Content Include="Views\ExMedicoes1\Delete.cshtml" />
+    <Content Include="Views\ExMedicoes1\Details.cshtml" />
+    <Content Include="Views\ExMedicoes1\Edit.cshtml" />
+    <Content Include="Views\ExMedicoes1\Index.cshtml" />
+    <Content Include="Views\ExActivoes\Create.cshtml" />
+    <Content Include="Views\ExActivoes\Delete.cshtml" />
+    <Content Include="Views\ExActivoes\Details.cshtml" />
+    <Content Include="Views\ExActivoes\Edit.cshtml" />
+    <Content Include="Views\ExActivoes\Index.cshtml" />
+    <Content Include="Views\Examen\Create.cshtml" />
+    <Content Include="Views\Examen\Delete.cshtml" />
+    <Content Include="Views\Examen\Details.cshtml" />
+    <Content Include="Views\Examen\Edit.cshtml" />
+    <Content Include="Views\Examen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

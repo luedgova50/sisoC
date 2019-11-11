@@ -1,5 +1,6 @@
 ﻿namespace sisoC.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,5 +16,7 @@
         [Display(Name = "Opciones Psicosensometrico")]
         [Index("ExPsico_Description_Index", IsUnique = true)]
         public string Description { get; set; }
+
+        public virtual ICollection<Examen> Examens { get; set; }
     }
 }

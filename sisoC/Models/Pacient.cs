@@ -1,6 +1,7 @@
 ﻿namespace sisoC.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
@@ -213,6 +214,8 @@
         public virtual Epsa Epsa { get; set; }
         public virtual Arpr Arpr { get; set; }
         public virtual Afpe Afpe { get; set; }
+
+        public virtual ICollection<Examen> Examens { get; set; }
 
     }
 }
