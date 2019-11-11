@@ -11,7 +11,7 @@
 
         [Required(ErrorMessage = "You must enter a {0}")]
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
-        [Display(Name = "Tipo Documento")]
+        [Display(Name = "Tipo")]
         public int DocumentTypeID { get; set; }
 
         [StringLength(20,
@@ -19,7 +19,7 @@
             MinimumLength = 5)]
         [Required(ErrorMessage = "You must enter the field {0}")]
         [Index("Enterprise_Document_Index", IsUnique = true)]
-        [Display(Name = "Número Documento")]
+        [Display(Name = "Número")]
         public string Document { get; set; }
 
         [StringLength(150,

@@ -74,5 +74,7 @@
         public System.Data.Entity.DbSet<sisoC.Models.ExActivo> ExActivoes { get; set; }
 
         public System.Data.Entity.DbSet<sisoC.Models.Examen> Examen { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.L250> L250 { get; set; }
     }
 }

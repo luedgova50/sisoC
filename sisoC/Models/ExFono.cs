@@ -13,7 +13,7 @@
         [StringLength(50, ErrorMessage =
             "The field {0} can contain maximun {1} and minimum {2} characters",
             MinimumLength = 5)]
-        [Display(Name = "Opción Fonoaudiologico")]
+        [Display(Name = "Fonoaudiologico")]
         [Index("ExFono_Description_Index", IsUnique = true)]
         public string Description { get; set; }
 

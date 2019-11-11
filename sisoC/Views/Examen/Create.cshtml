@@ -81,12 +81,12 @@
 
         </tr>
         <tr>
-            <td>
+            <td>                
                 @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </td>
 
-            <td>
+            <td>                
                 @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
             </td>
@@ -172,4 +172,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('.Date').datepicker({
+                showOptions: { speed: 'fast' },
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy',
+                gotoCurrent: true
+            });            
+        });  
+    </script>
 }

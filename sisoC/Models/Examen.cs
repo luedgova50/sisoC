@@ -6,35 +6,31 @@
     public class Examen
     {
         [Key]
-        public int ExamenID { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
-            ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "You must enter a {0}")]
-        [Display(Name = "Fecha Examen")]
+        public int ExamenID { get; set; }        
+        
+        [Display(Name = "Fecha")]
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Appointment Time is required")]
         [DataType(DataType.Time)]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}",
             ApplyFormatInEditMode = true)]
-        [Display(Name = "Hora Examen")]
+        [Display(Name = "Hora")]
         public TimeSpan? Time { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
-        [Display(Name = "Tipo Examen")]
+        [Display(Name = "Tipo")]
         public int ExamenTypeID { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
-        [Display(Name = "Nivel Examen")]
+        [Display(Name = "Nivel")]
         public int ExamenLevelID { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
-        [Display(Name = "Otro Examen")]
+        [Display(Name = "Otro")]
         public int OtherExamID { get; set; }
 
         [Required(ErrorMessage = "You must enter a {0}")]
@@ -69,7 +65,7 @@
 
         [Required(ErrorMessage = "You must enter a {0}")]
         [Range(1, double.MaxValue, ErrorMessage = "You must select a {0}")]
-        [Display(Name = "Estado Activo")]
+        [Display(Name = "Activo")]
         public int ExActivoID { get; set; }
 
         public virtual ExamenType ExamenType { get; set; }

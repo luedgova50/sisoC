@@ -209,6 +209,7 @@
     <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\GenericController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\L250Controller.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MilitaryServicesController.cs" />
     <Compile Include="Controllers\OtherExamsController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Models\FactorRh.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\L250.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MilitaryService.cs" />
     <Compile Include="Models\OtherExam.cs" />
@@ -507,11 +509,6 @@
     <Content Include="Views\ExMedicoes\Details.cshtml" />
     <Content Include="Views\ExMedicoes\Edit.cshtml" />
     <Content Include="Views\ExMedicoes\Index.cshtml" />
-    <Content Include="Views\ExMedicoes1\Create.cshtml" />
-    <Content Include="Views\ExMedicoes1\Delete.cshtml" />
-    <Content Include="Views\ExMedicoes1\Details.cshtml" />
-    <Content Include="Views\ExMedicoes1\Edit.cshtml" />
-    <Content Include="Views\ExMedicoes1\Index.cshtml" />
     <Content Include="Views\ExActivoes\Create.cshtml" />
     <Content Include="Views\ExActivoes\Delete.cshtml" />
     <Content Include="Views\ExActivoes\Details.cshtml" />
@@ -522,6 +519,11 @@
     <Content Include="Views\Examen\Details.cshtml" />
     <Content Include="Views\Examen\Edit.cshtml" />
     <Content Include="Views\Examen\Index.cshtml" />
+    <Content Include="Views\L250\Create.cshtml" />
+    <Content Include="Views\L250\Delete.cshtml" />
+    <Content Include="Views\L250\Details.cshtml" />
+    <Content Include="Views\L250\Edit.cshtml" />
+    <Content Include="Views\L250\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

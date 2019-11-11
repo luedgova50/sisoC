@@ -1,0 +1,26 @@
+﻿@model sisoC.Models.L250
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>L250</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Values)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Values)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.L250ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

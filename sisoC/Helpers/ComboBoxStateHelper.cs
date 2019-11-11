@@ -239,10 +239,10 @@
             enterprise.Add(new Enterprise
             {
                 EnterpriseID = 0,
-                BusinessName = "[Seleccionar una Opción...]",
+                Document = "[Seleccionar una Opción...]",
             });
 
-            return enterprise.OrderBy(d => d.BusinessName).ToList();
+            return enterprise.OrderBy(d => d.Document).ToList();
         }
 
         public static List<ExActivo> GetActivoes()
