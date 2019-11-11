@@ -199,6 +199,9 @@
     <Compile Include="Controllers\EpsasController.cs" />
     <Compile Include="Controllers\ExamenLevelsController.cs" />
     <Compile Include="Controllers\ExamenTypesController.cs" />
+    <Compile Include="Controllers\ExFonoesController.cs" />
+    <Compile Include="Controllers\ExOptoesController.cs" />
+    <Compile Include="Controllers\ExPsicoesController.cs" />
     <Compile Include="Controllers\FactorRhsController.cs" />
     <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\GenericController.cs" />
@@ -235,6 +238,9 @@
     <Compile Include="Models\Epsa.cs" />
     <Compile Include="Models\ExamenLevel.cs" />
     <Compile Include="Models\ExamenType.cs" />
+    <Compile Include="Models\ExFono.cs" />
+    <Compile Include="Models\ExOpto.cs" />
+    <Compile Include="Models\ExPsico.cs" />
     <Compile Include="Models\FactorRh.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -475,6 +481,21 @@
     <Content Include="Views\OtherExams\Details.cshtml" />
     <Content Include="Views\OtherExams\Edit.cshtml" />
     <Content Include="Views\OtherExams\Index.cshtml" />
+    <Content Include="Views\ExOptoes\Create.cshtml" />
+    <Content Include="Views\ExOptoes\Delete.cshtml" />
+    <Content Include="Views\ExOptoes\Details.cshtml" />
+    <Content Include="Views\ExOptoes\Edit.cshtml" />
+    <Content Include="Views\ExOptoes\Index.cshtml" />
+    <Content Include="Views\ExFonoes\Create.cshtml" />
+    <Content Include="Views\ExFonoes\Delete.cshtml" />
+    <Content Include="Views\ExFonoes\Details.cshtml" />
+    <Content Include="Views\ExFonoes\Edit.cshtml" />
+    <Content Include="Views\ExFonoes\Index.cshtml" />
+    <Content Include="Views\ExPsicoes\Create.cshtml" />
+    <Content Include="Views\ExPsicoes\Delete.cshtml" />
+    <Content Include="Views\ExPsicoes\Details.cshtml" />
+    <Content Include="Views\ExPsicoes\Edit.cshtml" />
+    <Content Include="Views\ExPsicoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

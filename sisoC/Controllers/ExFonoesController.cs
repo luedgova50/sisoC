@@ -1,6 +1,5 @@
 ﻿namespace sisoC.Controllers
-{
-    
+{    
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
@@ -8,19 +7,17 @@
     using sisoC.Helpers;
     using sisoC.Models;
 
-    public class CitiesController : Controller
+    public class ExFonoesController : Controller
     {
         private SisoCdataContext db = new SisoCdataContext();
 
-        // GET: Cities
+        // GET: ExFonoes
         public ActionResult Index()
         {
-            var cities = db.Cities.Include(c => c.State);
-
-            return View(cities.ToList());
+            return View(db.ExFonoes.ToList());
         }
 
-        // GET: Cities/Details/5
+        // GET: ExFonoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -29,37 +26,30 @@
                     HttpStatusCode.BadRequest);
             }
 
-            var city = db.Cities.Find(id);
+            var exFono = db.ExFonoes.Find(id);
 
-            if (city == null)
+            if (exFono == null)
             {
                 return HttpNotFound();
             }
 
-            return View(city);
+            return View(exFono);
         }
 
-        // GET: Cities/Create
+        // GET: ExFonoes/Create
         public ActionResult Create()
         {
-            ViewBag.StateID = 
-                new SelectList( 
-                    ComboBoxStateHelper.
-                    GetStates(), 
-                    "StateID", 
-                    "Name");
-
             return View();
         }
 
-        // POST: Cities/Create
+        // POST: ExFonoes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(City city)
+        public ActionResult Create(ExFono exFono)
         {
             if (ModelState.IsValid)
             {
-                db.Cities.Add(city);
+                db.ExFonoes.Add(exFono);
 
                 var response =
                     DBHelper.SaveChanges(db);
@@ -75,18 +65,10 @@
                     response.Message);
             }
 
-            ViewBag.StateID = 
-                new SelectList(
-                    ComboBoxStateHelper.
-                    GetStates(), 
-                "StateID", 
-                "Name", 
-                city.StateID);
-
-            return View(city);
+            return View(exFono);
         }
 
-        // GET: Cities/Edit/5
+        // GET: ExFonoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,33 +77,24 @@
                     HttpStatusCode.BadRequest);
             }
 
-            var city = db.Cities.Find(id);
+            var exFono = db.ExFonoes.Find(id);
 
-            if (city == null)
+            if (exFono == null)
             {
                 return HttpNotFound();
             }
 
-            ViewBag.StateID = 
-                new SelectList(
-                    ComboBoxStateHelper.
-                    GetStates(), 
-                    "StateID", 
-                    "Name", 
-                    city.StateID);
-
-            return View(city);
+            return View(exFono);
         }
 
-        // POST: Cities/Edit/5        
+        // POST: ExFonoes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(City city)
+        public ActionResult Edit(ExFono exFono)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(city).
-                    State = 
+                db.Entry(exFono).State = 
                     EntityState.Modified;
 
                 var response =
@@ -138,18 +111,10 @@
                     response.Message);
             }
 
-            ViewBag.StateID = 
-                new SelectList(
-                    ComboBoxStateHelper.
-                    GetStates(), 
-                    "StateID", 
-                    "Name", 
-                    city.StateID);
-
-            return View(city);
+            return View(exFono);
         }
 
-        // GET: Cities/Delete/5
+        // GET: ExFonoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -158,24 +123,24 @@
                     HttpStatusCode.BadRequest);
             }
 
-            var city = db.Cities.Find(id);
+            var exFono = db.ExFonoes.Find(id);
 
-            if (city == null)
+            if (exFono == null)
             {
                 return HttpNotFound();
             }
 
-            return View(city);
+            return View(exFono);
         }
 
-        // POST: Cities/Delete/5
+        // POST: ExFonoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var city = db.Cities.Find(id);
+            var exFono = db.ExFonoes.Find(id);
 
-            db.Cities.Remove(city);
+            db.ExFonoes.Remove(exFono);
 
             var response =
                     DBHelper.SaveChanges(db);
@@ -190,7 +155,7 @@
                 string.Empty,
                 response.Message);
 
-            return View(city);
+            return View(exFono);
         }
 
         protected override void Dispose(bool disposing)

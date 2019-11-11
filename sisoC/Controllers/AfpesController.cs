@@ -139,13 +139,24 @@
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Afpe afpe = db.Afpes.Find(id);
+            var afpe = db.Afpes.Find(id);
 
             db.Afpes.Remove(afpe);
 
-            db.SaveChanges();
+            var response =
+                    DBHelper.SaveChanges(db);
 
-            return RedirectToAction("Index");
+            if (response.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.
+                AddModelError(
+                string.Empty,
+                response.Message);
+
+            return View(afpe);
         }
 
         protected override void Dispose(bool disposing)

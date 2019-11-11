@@ -53,14 +53,20 @@
 
         public DbSet<University> Universities { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.TypeLogin> TypeLogins { get; set; }
+        public DbSet<TypeLogin> TypeLogins { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.Enterprise> Enterprises { get; set; }
+        public DbSet<Enterprise> Enterprises { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.ExamenType> ExamenTypes { get; set; }
+        public DbSet<ExamenType> ExamenTypes { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.ExamenLevel> ExamenLevels { get; set; }
+        public DbSet<ExamenLevel> ExamenLevels { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.OtherExam> OtherExams { get; set; }
+        public DbSet<OtherExam> OtherExams { get; set; }
+
+        public DbSet<ExOpto> ExOptoes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.ExFono> ExFonoes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.ExPsico> ExPsicoes { get; set; }
     }
 }
