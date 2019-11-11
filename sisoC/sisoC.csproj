@@ -197,12 +197,15 @@
     <Compile Include="Controllers\DriveLicensesController.cs" />
     <Compile Include="Controllers\EnterprisesController.cs" />
     <Compile Include="Controllers\EpsasController.cs" />
+    <Compile Include="Controllers\ExamenLevelsController.cs" />
+    <Compile Include="Controllers\ExamenTypesController.cs" />
     <Compile Include="Controllers\FactorRhsController.cs" />
     <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\GenericController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MilitaryServicesController.cs" />
+    <Compile Include="Controllers\OtherExamsController.cs" />
     <Compile Include="Controllers\PacientsController.cs" />
     <Compile Include="Controllers\ProfessionsController.cs" />
     <Compile Include="Controllers\SchoolLevelsController.cs" />
@@ -230,11 +233,14 @@
     <Compile Include="Models\DriveLicense.cs" />
     <Compile Include="Models\Enterprise.cs" />
     <Compile Include="Models\Epsa.cs" />
+    <Compile Include="Models\ExamenLevel.cs" />
+    <Compile Include="Models\ExamenType.cs" />
     <Compile Include="Models\FactorRh.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MilitaryService.cs" />
+    <Compile Include="Models\OtherExam.cs" />
     <Compile Include="Models\Pacient.cs" />
     <Compile Include="Models\Profession.cs" />
     <Compile Include="Models\SchoolLevel.cs" />
@@ -454,6 +460,21 @@
     <Content Include="Views\Enterprises\Details.cshtml" />
     <Content Include="Views\Enterprises\Edit.cshtml" />
     <Content Include="Views\Enterprises\Index.cshtml" />
+    <Content Include="Views\ExamenTypes\Create.cshtml" />
+    <Content Include="Views\ExamenTypes\Delete.cshtml" />
+    <Content Include="Views\ExamenTypes\Details.cshtml" />
+    <Content Include="Views\ExamenTypes\Edit.cshtml" />
+    <Content Include="Views\ExamenTypes\Index.cshtml" />
+    <Content Include="Views\ExamenLevels\Create.cshtml" />
+    <Content Include="Views\ExamenLevels\Delete.cshtml" />
+    <Content Include="Views\ExamenLevels\Details.cshtml" />
+    <Content Include="Views\ExamenLevels\Edit.cshtml" />
+    <Content Include="Views\ExamenLevels\Index.cshtml" />
+    <Content Include="Views\OtherExams\Create.cshtml" />
+    <Content Include="Views\OtherExams\Delete.cshtml" />
+    <Content Include="Views\OtherExams\Details.cshtml" />
+    <Content Include="Views\OtherExams\Edit.cshtml" />
+    <Content Include="Views\OtherExams\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

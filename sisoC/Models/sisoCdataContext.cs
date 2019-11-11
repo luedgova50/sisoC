@@ -56,5 +56,11 @@
         public System.Data.Entity.DbSet<sisoC.Models.TypeLogin> TypeLogins { get; set; }
 
         public System.Data.Entity.DbSet<sisoC.Models.Enterprise> Enterprises { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.ExamenType> ExamenTypes { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.ExamenLevel> ExamenLevels { get; set; }
+
+        public System.Data.Entity.DbSet<sisoC.Models.OtherExam> OtherExams { get; set; }
     }
 }
