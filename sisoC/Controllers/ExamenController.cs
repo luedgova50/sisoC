@@ -1,24 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using sisoC.Models;
+﻿namespace sisoC.Controllers
+{    
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+    using PagedList;
+    using sisoC.Helpers;
+    using sisoC.Models;
 
-namespace sisoC.Controllers
-{
     public class ExamenController : Controller
     {
         private SisoCdataContext db = new SisoCdataContext();
 
         // GET: Examen
-        public ActionResult Index()
+        public ActionResult Index(int? page = null)
         {
-            var examen = db.Examen.Include(e => e.Enterprise).Include(e => e.ExActivo).Include(e => e.ExamenLevel).Include(e => e.ExamenType).Include(e => e.ExFono).Include(e => e.ExMedico).Include(e => e.ExOpto).Include(e => e.ExPsico).Include(e => e.OtherExam).Include(e => e.Pacient);
-            return View(examen.ToList());
+            var examen = 
+                db.Examen.
+                Include(e => e.Enterprise).
+                Include(e => e.ExActivo).
+                Include(e => e.ExamenLevel).
+                Include(e => e.ExamenType).
+                Include(e => e.ExFono).
+                Include(e => e.ExMedico).
+                Include(e => e.ExOpto).
+                Include(e => e.ExPsico).
+                Include(e => e.OtherExam).
+                Include(e => e.Pacient);
+
+            page = (page ?? 1);
+
+            return View(db.Examen.
+                OrderBy(ex => ex.Date).
+                ToPagedList((int)page, 6));
         }
 
         // GET: Examen/Details/5
@@ -26,56 +40,199 @@ namespace sisoC.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
-            Examen examen = db.Examen.Find(id);
+
+            var examen = db.Examen.Find(id);
+
             if (examen == null)
             {
                 return HttpNotFound();
             }
+
             return View(examen);
         }
 
         // GET: Examen/Create
         public ActionResult Create()
         {
-            ViewBag.EnterpriseID = new SelectList(db.Enterprises, "EnterpriseID", "Document");
-            ViewBag.ExActivoID = new SelectList(db.ExActivoes, "ExActivoID", "Description");
-            ViewBag.ExamenLevelID = new SelectList(db.ExamenLevels, "ExamenLevelID", "Description");
-            ViewBag.ExamenTypeID = new SelectList(db.ExamenTypes, "ExamenTypeID", "Description");
-            ViewBag.ExFonoID = new SelectList(db.ExFonoes, "ExFonoID", "Description");
-            ViewBag.ExMedicoID = new SelectList(db.ExMedicoes, "ExMedicoID", "Description");
-            ViewBag.ExOptoID = new SelectList(db.ExOptoes, "ExOptoID", "Description");
-            ViewBag.ExPsicoID = new SelectList(db.ExPsicoes, "ExPsicoID", "Description");
-            ViewBag.OtherExamID = new SelectList(db.OtherExams, "OtherExamID", "Description");
-            ViewBag.PacientID = new SelectList(db.Pacients, "PacientID", "Document");
+            ViewBag.EnterpriseID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEnterprises(), 
+                    "EnterpriseID", 
+                    "Document");
+
+            ViewBag.ExActivoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetActivoes(), 
+                    "ExActivoID", 
+                    "Description");
+
+            ViewBag.ExamenLevelID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetELevels(), 
+                    "ExamenLevelID", 
+                    "Description");
+
+            ViewBag.ExamenTypeID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetETypes(), 
+                    "ExamenTypeID", 
+                    "Description");
+
+            ViewBag.ExFonoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEFonos(), 
+                    "ExFonoID", 
+                    "Description");
+
+            ViewBag.ExMedicoID = 
+                new SelectList(
+                    ComboBoxStateHelper
+                    .GetEMedicos(), 
+                    "ExMedicoID", 
+                    "Description");
+
+            ViewBag.ExOptoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEOptos(), 
+                    "ExOptoID", 
+                    "Description");
+
+            ViewBag.ExPsicoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEPsicos(), 
+                    "ExPsicoID", 
+                    "Description");
+
+            ViewBag.OtherExamID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetOthers(), 
+                    "OtherExamID", 
+                    "Description");
+
+            ViewBag.PacientID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetPacients(), 
+                    "PacientID", 
+                    "Document");
+
             return View();
         }
 
         // POST: Examen/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExamenID,Date,Time,ExamenTypeID,ExamenLevelID,OtherExamID,PacientID,EnterpriseID,ExOptoID,ExFonoID,ExPsicoID,ExMedicoID,ExActivoID")] Examen examen)
+        public ActionResult Create(Examen examen)
         {
             if (ModelState.IsValid)
             {
                 db.Examen.Add(examen);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var response =
+                    DBHelper.SaveChanges(db);
+
+                if (response.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.
+                    AddModelError(
+                    string.Empty,
+                    response.Message);
             }
 
-            ViewBag.EnterpriseID = new SelectList(db.Enterprises, "EnterpriseID", "Document", examen.EnterpriseID);
-            ViewBag.ExActivoID = new SelectList(db.ExActivoes, "ExActivoID", "Description", examen.ExActivoID);
-            ViewBag.ExamenLevelID = new SelectList(db.ExamenLevels, "ExamenLevelID", "Description", examen.ExamenLevelID);
-            ViewBag.ExamenTypeID = new SelectList(db.ExamenTypes, "ExamenTypeID", "Description", examen.ExamenTypeID);
-            ViewBag.ExFonoID = new SelectList(db.ExFonoes, "ExFonoID", "Description", examen.ExFonoID);
-            ViewBag.ExMedicoID = new SelectList(db.ExMedicoes, "ExMedicoID", "Description", examen.ExMedicoID);
-            ViewBag.ExOptoID = new SelectList(db.ExOptoes, "ExOptoID", "Description", examen.ExOptoID);
-            ViewBag.ExPsicoID = new SelectList(db.ExPsicoes, "ExPsicoID", "Description", examen.ExPsicoID);
-            ViewBag.OtherExamID = new SelectList(db.OtherExams, "OtherExamID", "Description", examen.OtherExamID);
-            ViewBag.PacientID = new SelectList(db.Pacients, "PacientID", "Document", examen.PacientID);
+            ViewBag.EnterpriseID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEnterprises(), 
+                    "EnterpriseID", 
+                    "Document", 
+                    examen.EnterpriseID);
+
+            ViewBag.ExActivoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetActivoes(), 
+                    "ExActivoID", 
+                    "Description", 
+                    examen.ExActivoID);
+
+            ViewBag.ExamenLevelID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetELevels(), 
+                    "ExamenLevelID", 
+                    "Description", 
+                    examen.ExamenLevelID);
+
+            ViewBag.ExamenTypeID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetETypes(), 
+                    "ExamenTypeID", 
+                    "Description", 
+                    examen.ExamenTypeID);
+
+            ViewBag.ExFonoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEFonos(), 
+                    "ExFonoID", 
+                    "Description", 
+                    examen.ExFonoID);
+
+            ViewBag.ExMedicoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEMedicos(), 
+                    "ExMedicoID", 
+                    "Description", 
+                    examen.ExMedicoID);
+
+            ViewBag.ExOptoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEOptos(), 
+                    "ExOptoID", 
+                    "Description", 
+                    examen.ExOptoID);
+
+            ViewBag.ExPsicoID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEPsicos(), 
+                    "ExPsicoID", 
+                    "Description", 
+                    examen.ExPsicoID);
+
+            ViewBag.OtherExamID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetOthers(), 
+                    "OtherExamID", 
+                    "Description", 
+                    examen.OtherExamID);
+
+            ViewBag.PacientID = 
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetPacients(), 
+                    "PacientID", 
+                    "Document", 
+                    examen.PacientID);
+
             return View(examen);
         }
 
@@ -84,49 +241,204 @@ namespace sisoC.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
-            Examen examen = db.Examen.Find(id);
+
+            var examen = db.Examen.Find(id);
+
             if (examen == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EnterpriseID = new SelectList(db.Enterprises, "EnterpriseID", "Document", examen.EnterpriseID);
-            ViewBag.ExActivoID = new SelectList(db.ExActivoes, "ExActivoID", "Description", examen.ExActivoID);
-            ViewBag.ExamenLevelID = new SelectList(db.ExamenLevels, "ExamenLevelID", "Description", examen.ExamenLevelID);
-            ViewBag.ExamenTypeID = new SelectList(db.ExamenTypes, "ExamenTypeID", "Description", examen.ExamenTypeID);
-            ViewBag.ExFonoID = new SelectList(db.ExFonoes, "ExFonoID", "Description", examen.ExFonoID);
-            ViewBag.ExMedicoID = new SelectList(db.ExMedicoes, "ExMedicoID", "Description", examen.ExMedicoID);
-            ViewBag.ExOptoID = new SelectList(db.ExOptoes, "ExOptoID", "Description", examen.ExOptoID);
-            ViewBag.ExPsicoID = new SelectList(db.ExPsicoes, "ExPsicoID", "Description", examen.ExPsicoID);
-            ViewBag.OtherExamID = new SelectList(db.OtherExams, "OtherExamID", "Description", examen.OtherExamID);
-            ViewBag.PacientID = new SelectList(db.Pacients, "PacientID", "Document", examen.PacientID);
+
+            ViewBag.EnterpriseID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEnterprises(),
+                    "EnterpriseID",
+                    "Document",
+                    examen.EnterpriseID);
+
+            ViewBag.ExActivoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetActivoes(),
+                    "ExActivoID",
+                    "Description",
+                    examen.ExActivoID);
+
+            ViewBag.ExamenLevelID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetELevels(),
+                    "ExamenLevelID",
+                    "Description",
+                    examen.ExamenLevelID);
+
+            ViewBag.ExamenTypeID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetETypes(),
+                    "ExamenTypeID",
+                    "Description",
+                    examen.ExamenTypeID);
+
+            ViewBag.ExFonoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEFonos(),
+                    "ExFonoID",
+                    "Description",
+                    examen.ExFonoID);
+
+            ViewBag.ExMedicoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEMedicos(),
+                    "ExMedicoID",
+                    "Description",
+                    examen.ExMedicoID);
+
+            ViewBag.ExOptoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEOptos(),
+                    "ExOptoID",
+                    "Description",
+                    examen.ExOptoID);
+
+            ViewBag.ExPsicoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEPsicos(),
+                    "ExPsicoID",
+                    "Description",
+                    examen.ExPsicoID);
+
+            ViewBag.OtherExamID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetOthers(),
+                    "OtherExamID",
+                    "Description",
+                    examen.OtherExamID);
+
+            ViewBag.PacientID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetPacients(),
+                    "PacientID",
+                    "Document",
+                    examen.PacientID);
+
             return View(examen);
         }
 
         // POST: Examen/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ExamenID,Date,Time,ExamenTypeID,ExamenLevelID,OtherExamID,PacientID,EnterpriseID,ExOptoID,ExFonoID,ExPsicoID,ExMedicoID,ExActivoID")] Examen examen)
+        public ActionResult Edit(Examen examen)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(examen).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.Entry(examen).State = 
+                    EntityState.Modified;
+
+                var response =
+                    DBHelper.SaveChanges(db);
+
+                if (response.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.
+                    AddModelError(
+                    string.Empty,
+                    response.Message);
             }
-            ViewBag.EnterpriseID = new SelectList(db.Enterprises, "EnterpriseID", "Document", examen.EnterpriseID);
-            ViewBag.ExActivoID = new SelectList(db.ExActivoes, "ExActivoID", "Description", examen.ExActivoID);
-            ViewBag.ExamenLevelID = new SelectList(db.ExamenLevels, "ExamenLevelID", "Description", examen.ExamenLevelID);
-            ViewBag.ExamenTypeID = new SelectList(db.ExamenTypes, "ExamenTypeID", "Description", examen.ExamenTypeID);
-            ViewBag.ExFonoID = new SelectList(db.ExFonoes, "ExFonoID", "Description", examen.ExFonoID);
-            ViewBag.ExMedicoID = new SelectList(db.ExMedicoes, "ExMedicoID", "Description", examen.ExMedicoID);
-            ViewBag.ExOptoID = new SelectList(db.ExOptoes, "ExOptoID", "Description", examen.ExOptoID);
-            ViewBag.ExPsicoID = new SelectList(db.ExPsicoes, "ExPsicoID", "Description", examen.ExPsicoID);
-            ViewBag.OtherExamID = new SelectList(db.OtherExams, "OtherExamID", "Description", examen.OtherExamID);
-            ViewBag.PacientID = new SelectList(db.Pacients, "PacientID", "Document", examen.PacientID);
+
+            ViewBag.EnterpriseID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEnterprises(),
+                    "EnterpriseID",
+                    "Document",
+                    examen.EnterpriseID);
+
+            ViewBag.ExActivoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetActivoes(),
+                    "ExActivoID",
+                    "Description",
+                    examen.ExActivoID);
+
+            ViewBag.ExamenLevelID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetELevels(),
+                    "ExamenLevelID",
+                    "Description",
+                    examen.ExamenLevelID);
+
+            ViewBag.ExamenTypeID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetETypes(),
+                    "ExamenTypeID",
+                    "Description",
+                    examen.ExamenTypeID);
+
+            ViewBag.ExFonoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEFonos(),
+                    "ExFonoID",
+                    "Description",
+                    examen.ExFonoID);
+
+            ViewBag.ExMedicoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEMedicos(),
+                    "ExMedicoID",
+                    "Description",
+                    examen.ExMedicoID);
+
+            ViewBag.ExOptoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEOptos(),
+                    "ExOptoID",
+                    "Description",
+                    examen.ExOptoID);
+
+            ViewBag.ExPsicoID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetEPsicos(),
+                    "ExPsicoID",
+                    "Description",
+                    examen.ExPsicoID);
+
+            ViewBag.OtherExamID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetOthers(),
+                    "OtherExamID",
+                    "Description",
+                    examen.OtherExamID);
+
+            ViewBag.PacientID =
+                new SelectList(
+                    ComboBoxStateHelper.
+                    GetPacients(),
+                    "PacientID",
+                    "Document",
+                    examen.PacientID);
+
             return View(examen);
         }
 
@@ -135,13 +447,17 @@ namespace sisoC.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
-            Examen examen = db.Examen.Find(id);
+
+            var examen = db.Examen.Find(id);
+
             if (examen == null)
             {
                 return HttpNotFound();
             }
+
             return View(examen);
         }
 
@@ -150,10 +466,24 @@ namespace sisoC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Examen examen = db.Examen.Find(id);
+            var examen = db.Examen.Find(id);
+
             db.Examen.Remove(examen);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+            var response =
+                    DBHelper.SaveChanges(db);
+
+            if (response.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.
+                AddModelError(
+                string.Empty,
+                response.Message);
+
+            return View(examen);
         }
 
         protected override void Dispose(bool disposing)
@@ -162,6 +492,7 @@ namespace sisoC.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

@@ -219,6 +219,136 @@
             return university.OrderBy(d => d.Description).ToList();
         }
 
+        public static List<Pacient> GetPacients()
+        {
+            var pacient = db.Pacients.ToList();
+
+            pacient.Add(new Pacient
+            {
+                PacientID = 0,
+                Document = "[Seleccionar una Opción...]",
+            });
+
+            return pacient.OrderBy(d => d.Document).ToList();
+        }
+
+        public static List<Enterprise> GetEnterprises()
+        {
+            var enterprise = db.Enterprises.ToList();
+
+            enterprise.Add(new Enterprise
+            {
+                EnterpriseID = 0,
+                BusinessName = "[Seleccionar una Opción...]",
+            });
+
+            return enterprise.OrderBy(d => d.BusinessName).ToList();
+        }
+
+        public static List<ExActivo> GetActivoes()
+        {
+            var activos = db.ExActivoes.ToList();
+
+            activos.Add(new ExActivo
+            {
+                ExActivoID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return activos.OrderBy(d => d.Description).ToList();
+        }
+
+        public static List<ExamenLevel> GetELevels()
+        {
+            var elevels = db.ExamenLevels.ToList();
+
+            elevels.Add(new ExamenLevel
+            {
+                ExamenLevelID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return elevels.OrderBy(d => d.Description).ToList();
+        }
+
+        public static List<ExamenType> GetETypes()
+        {
+            var etypes = db.ExamenTypes.ToList();
+
+            etypes.Add(new ExamenType
+            {
+                ExamenTypeID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return etypes.OrderBy(d => d.Description).ToList();
+        }
+
+        public static List<ExFono> GetEFonos()
+        {
+            var efonos = db.ExFonoes.ToList();
+
+            efonos.Add(new ExFono
+            {
+                ExFonoID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return efonos.OrderBy(d => d.Description).ToList();
+        }
+
+        public static List<ExMedico> GetEMedicos()
+        {
+            var emedicos = db.ExMedicoes.ToList();
+
+            emedicos.Add(new ExMedico
+            {
+                ExMedicoID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return emedicos.OrderBy(d => d.Description).ToList();
+        }
+
+        public static List<ExOpto> GetEOptos()
+        {
+            var eoptos = db.ExOptoes.ToList();
+
+            eoptos.Add(new ExOpto
+            {
+                ExOptoID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return eoptos.OrderBy(d => d.Description).ToList();
+        }
+
+        public static List<ExPsico> GetEPsicos()
+        {
+            var epsicos = db.ExPsicoes.ToList();
+
+            epsicos.Add(new ExPsico
+            {
+                ExPsicoID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return epsicos.OrderBy(d => d.Description).ToList();
+        }
+
+        public static List<OtherExam> GetOthers()
+        {
+            var others = db.OtherExams.ToList();
+
+            others.Add(new OtherExam
+            {
+                OtherExamID = 0,
+                Description = "[Seleccionar una Opción...]",
+            });
+
+            return others.OrderBy(d => d.Description).ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();

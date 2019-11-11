@@ -1,84 +1,35 @@
-﻿@model IEnumerable<sisoC.Models.Examen>
+﻿@model PagedList.IPagedList<sisoC.Models.Examen>
+@using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Examenes";
 }
 
-<h2>Index</h2>
+<h2>Listado de Pacientes en Examenes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo Registro", "Create", new { }, new { @class = "btn btn-primary btn-lg" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Enterprise.Document)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Pacient.Document)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExActivo.Description)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExamenLevel.Description)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Time)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExamenType.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExFono.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExMedico.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExOpto.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExPsico.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OtherExam.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pacient.Document)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ExActivo.Description)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Enterprise.Document)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExActivo.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExamenLevel.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExamenType.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExFono.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExMedico.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExOpto.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExPsico.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OtherExam.Description)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Pacient.Document)
         </td>
@@ -89,11 +40,22 @@
             @Html.DisplayFor(modelItem => item.Time)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ExamenID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ExamenID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ExamenID })
+            @Html.DisplayFor(modelItem => item.ExActivo.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ExamenID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.ExamenID }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ExamenID }, new { @class = "btn btn-danger" })
         </td>
     </tr>
-}
+    }
 
 </table>
+Página: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), de: @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder =
+    ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))
