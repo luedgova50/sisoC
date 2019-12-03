@@ -11,7 +11,8 @@ function handleFileSelect(e) {
             reader.readAsDataURL(f);
             $("#NombreArchivo").empty();
             $("#NombreArchivo").attr("title", f.name);
-            $("#NombreArchivo").append("<span class='glyphicon glyphicon-file kv-caption-icon' style='display:inline-block'></span>" + f.name);
+            $("#NombreArchivo").
+                append("<span class='glyphicon glyphicon-file kv-caption-icon' style='display:inline-block'></span>" + f.name);
         }
         else {
             alert(f.name + ' no esta permitido cargarlo');

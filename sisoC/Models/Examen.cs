@@ -6,9 +6,13 @@
     public class Examen
     {
         [Key]
-        public int ExamenID { get; set; }        
-        
+        public int ExamenID { get; set; }
+
+        [Required(ErrorMessage = "Appointment Time is required")]
+        [DataType(DataType.Date)]
         [Display(Name = "Fecha")]
+        [DisplayFormat(ApplyFormatInEditMode = true, 
+            DataFormatString = "{0:dd/MMM/yyyy}")]
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Appointment Time is required")]

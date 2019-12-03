@@ -18,10 +18,10 @@
         <h1>Datos Básicos del Paciente</h1>
         <table style="width: 100%">
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
@@ -61,17 +61,17 @@
         <table style="width: 100%">
 
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
                     @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
                 </th>
                 <th>
-                    @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label " })
                 </th>
                 <th>
                     @Html.LabelFor(model => model.BirthPlace, htmlAttributes: new { @class = "control-label" })
@@ -86,10 +86,13 @@
                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                 </td>
                 <td>
-                    <div class='input-group date' style="width:280px">
-                        @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control date-picker" } })
-                        @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
-                    </div>                    
+                    <div class='input-group date' id='datepicker' style="width:280px">
+                        @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })                                 
                 </td>
                 <td>
                     @Html.EditorFor(model => model.BirthPlace, new { htmlAttributes = new { @class = "form-control" } })
@@ -103,10 +106,10 @@
         </table>
         <table style="width: 100%">
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
@@ -145,10 +148,10 @@
         </table>
         <table style="width: 100%">
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
@@ -187,10 +190,10 @@
         </table>
         <table style="width: 100%">
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
@@ -229,10 +232,10 @@
         </table>
         <table style="width: 100%">
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
@@ -271,10 +274,10 @@
         </table>
         <table style="width: 100%">
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
@@ -313,10 +316,10 @@
         </table>
         <table style="width: 100%">
             <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
+                <col style="width: 24%" />
             </colgroup>
             <tr>
                 <th>
@@ -325,7 +328,9 @@
                 <th>
                     @Html.LabelFor(model => model.FirmFile, htmlAttributes: new { @class = "control-label" })
                 </th>
-                <td></td>
+                <thd>
+
+                </thd>
                 <th>
 
                 </th>
@@ -353,7 +358,7 @@
                     <div class="file-input-new">
                         <div class="input-group" style="width:280px">
                             <div tabindex="500" class="form-control file-caption">
-                                <div class="file-caption-name" id="NombreArchivo">
+                                <div class="file-caption-name" id="NombreArchivo2">
                                 </div>
                             </div>
                             <div class="input-group-btn" style="height:auto">
@@ -388,16 +393,11 @@
     <script type="text/javascript">
         var Url = '@Url.Action("GetCities", "Generic")';
     </script>
-    <script type="text/javascript">
-        $(document).ready$(function () {
-            $(".date-picker").datepicker({
-  
-                dateFormat: "dd-mm-yy",
-                changeMonth: true,
-                changeYear: true
-
-            });
+     <script type="text/javascript">
+        $(function () {
+            $('#datepicker').datetimepicker({ format: 'YYYY/MM/DD' });
         });
-    </script>  
+    </script>
+
 
 }

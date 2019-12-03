@@ -65,16 +65,16 @@
 
         public DbSet<ExOpto> ExOptoes { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.ExFono> ExFonoes { get; set; }
+        public DbSet<ExFono> ExFonoes { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.ExPsico> ExPsicoes { get; set; }
+        public DbSet<ExPsico> ExPsicoes { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.ExMedico> ExMedicoes { get; set; }
+        public DbSet<ExMedico> ExMedicoes { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.ExActivo> ExActivoes { get; set; }
+        public DbSet<ExActivo> ExActivoes { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.Examen> Examen { get; set; }
+        public DbSet<Examen> Examen { get; set; }
 
-        public System.Data.Entity.DbSet<sisoC.Models.L250> L250 { get; set; }
+        public DbSet<L250> L250 { get; set; }
     }
 }

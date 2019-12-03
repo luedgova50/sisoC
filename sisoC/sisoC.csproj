@@ -227,6 +227,7 @@
     <Compile Include="Helpers\ComboBoxStateHelper.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Helpers\FileImageUpLoad.cs" />
+    <Compile Include="Helpers\FirmImageUpLoad.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\Response.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
@@ -326,6 +327,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\fileupload.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\firmupload.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

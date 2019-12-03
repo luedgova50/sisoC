@@ -33,7 +33,8 @@ namespace sisoC
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/sisoC.js",
                         "~/Scripts/bootstrap-datetimepicker.js",
-                        "~/Scripts/fileupload.js"));
+                        "~/Scripts/fileupload.js",
+                        "~/Scripts/firmupload.js"));
 
 
 

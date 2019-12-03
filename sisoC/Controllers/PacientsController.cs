@@ -141,19 +141,18 @@
                 var response =
                     DBHelper.SaveChanges(db);
 
+                ModelState.
+                   AddModelError(
+                   string.Empty,
+                   response.Message);
+
                 if (response.Succeeded)
                 {
                     return RedirectToAction("Index");
                 }
 
-                ModelState.
-                    AddModelError(
-                    string.Empty,
-                    response.Message);
-                                                
                 if (pacient.PhotoFile != null)
-                {                   
-
+                {
                     var folder = "~/Content/Photos";
 
                     var file = string.Format("{0}.jpg",
@@ -164,7 +163,7 @@
                         UploadPhoto(
                             pacient.
                             PhotoFile,
-                            folder, 
+                            folder,
                             file);
 
                     if (response2)
@@ -175,12 +174,12 @@
 
                         pacient.Photo = pic;
 
-                        db.Entry(pacient).State = 
+                        db.Entry(pacient).State =
                             EntityState.Modified;
 
                         db.SaveChanges();
                     }
-                }                              
+                }
 
                 if (pacient.FirmFile != null)
                 {
@@ -190,11 +189,11 @@
                             pacient.PacientID);
 
                     var response3 =
-                        FileImageUpLoad.
-                        UploadPhoto(
+                        FirmImageUpLoad.
+                        UploadFirm(
                             pacient.
                             FirmFile,
-                            folder2, 
+                            folder2,
                             file2);
 
                     if (response3)
@@ -208,11 +207,11 @@
                         db.Entry(pacient).State =
                             EntityState.Modified;
 
-                       db.SaveChanges();
+                        //db.SaveChanges();
                     }
                 }
 
-               
+                
             }
 
             ViewBag.AfpeID = 
@@ -436,8 +435,8 @@
                         pacient.PacientID);
 
                     var response3 =
-                        FileImageUpLoad.
-                        UploadPhoto(
+                        FirmImageUpLoad.
+                        UploadFirm(
                             pacient.
                             FirmFile,
                             folder2,
