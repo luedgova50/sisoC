@@ -446,11 +446,6 @@
     <Content Include="Views\MilitaryServices\Details.cshtml" />
     <Content Include="Views\MilitaryServices\Edit.cshtml" />
     <Content Include="Views\MilitaryServices\Index.cshtml" />
-    <Content Include="Views\Pacients\Create.cshtml" />
-    <Content Include="Views\Pacients\Delete.cshtml" />
-    <Content Include="Views\Pacients\Details.cshtml" />
-    <Content Include="Views\Pacients\Edit.cshtml" />
-    <Content Include="Views\Pacients\Index.cshtml" />
     <Content Include="Views\UserRoles\Create.cshtml" />
     <Content Include="Views\UserRoles\Delete.cshtml" />
     <Content Include="Views\UserRoles\Details.cshtml" />
@@ -526,6 +521,11 @@
     <Content Include="Views\L250\Details.cshtml" />
     <Content Include="Views\L250\Edit.cshtml" />
     <Content Include="Views\L250\Index.cshtml" />
+    <Content Include="Views\Pacients\Create.cshtml" />
+    <Content Include="Views\Pacients\Delete.cshtml" />
+    <Content Include="Views\Pacients\Details.cshtml" />
+    <Content Include="Views\Pacients\Edit.cshtml" />
+    <Content Include="Views\Pacients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

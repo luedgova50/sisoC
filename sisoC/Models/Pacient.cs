@@ -182,10 +182,16 @@
         public int AfpeID { get; set; }
 
         [DataType(DataType.ImageUrl)]
+        [Display(Name = "Foto")]
         public string Photo { get; set; }
 
         [DataType(DataType.ImageUrl)]
+        [Display(Name = "Firma")]
         public string Firm { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Huella")]
+        public string PawPrint { get; set; }
 
         [NotMapped]
         [Display(Name = "Foto")]
@@ -194,6 +200,10 @@
         [NotMapped]
         [Display(Name = "Firma")]
         public HttpPostedFileBase FirmFile { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Huella")]
+        public HttpPostedFileBase PawPrintFile { get; set; }
 
         [NotMapped]
         [Display(Name = "Nombres")]

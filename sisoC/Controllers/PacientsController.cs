@@ -1,12 +1,16 @@
 ﻿namespace sisoC.Controllers
-{    
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
+    using System.Web;
     using System.Web.Mvc;
+    using sisoC.Models;
     using PagedList;
     using sisoC.Helpers;
-    using sisoC.Models;
 
     public class PacientsController : Controller
     {
@@ -47,7 +51,7 @@
                 return new HttpStatusCodeResult(
                     HttpStatusCode.BadRequest);
             }
-
+            
             var pacient = db.Pacients.Find(id);
 
             if (pacient == null)
@@ -61,75 +65,75 @@
         // GET: Pacients/Create
         public ActionResult Create()
         {
-            ViewBag.AfpeID = 
+            ViewBag.AfpeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetAfpes(), 
+                    ComboBoxStateHelper.GetAfpes(),
                     "AfpeID", "Description");
 
-            ViewBag.ArprID = 
+            ViewBag.ArprID =
                 new SelectList(
-                    ComboBoxStateHelper.GetArps(), 
+                    ComboBoxStateHelper.GetArps(),
                     "ArprID", "Description");
 
-            ViewBag.CityID = 
+            ViewBag.CityID =
                 new SelectList(
-                    ComboBoxStateHelper.GetCities(0), 
+                    ComboBoxStateHelper.GetCities(0),
                     "CityID", "Name");
 
-            ViewBag.CivilID = 
+            ViewBag.CivilID =
                 new SelectList(
-                    ComboBoxStateHelper.GetCivils(), 
+                    ComboBoxStateHelper.GetCivils(),
                     "CivilID", "Description");
 
-            ViewBag.DocumentTypeID = 
+            ViewBag.DocumentTypeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetDocumentTypes(), 
+                    ComboBoxStateHelper.GetDocumentTypes(),
                     "DocumentTypeID", "Description");
 
-            ViewBag.DriveLicenseID = 
+            ViewBag.DriveLicenseID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLicenses(), 
+                    ComboBoxStateHelper.GetLicenses(),
                     "DriveLicenseID", "Description");
 
-            ViewBag.EpsaID = 
+            ViewBag.EpsaID =
                 new SelectList(
-                    ComboBoxStateHelper.GetEpsas(), 
+                    ComboBoxStateHelper.GetEpsas(),
                     "EpsaID", "Description");
 
-            ViewBag.FactorRhID = 
+            ViewBag.FactorRhID =
                 new SelectList(
-                    ComboBoxStateHelper.GetFactors(), 
+                    ComboBoxStateHelper.GetFactors(),
                     "FactorRhID", "Description");
 
-            ViewBag.GenderID = 
+            ViewBag.GenderID =
                 new SelectList(
-                    ComboBoxStateHelper.GetGenders(), 
+                    ComboBoxStateHelper.GetGenders(),
                     "GenderID", "Description");
 
-            ViewBag.MilitaryServiceID = 
+            ViewBag.MilitaryServiceID =
                 new SelectList(
-                    ComboBoxStateHelper.GetMilitaries(), 
+                    ComboBoxStateHelper.GetMilitaries(),
                     "MilitaryServiceID", "Options");
 
-            ViewBag.ProfessionID = 
+            ViewBag.ProfessionID =
                 new SelectList(
-                    ComboBoxStateHelper.GetProfessions(), 
+                    ComboBoxStateHelper.GetProfessions(),
                     "ProfessionID", "Description");
 
-            ViewBag.SchoolLevelID = 
+            ViewBag.SchoolLevelID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLevels(), 
+                    ComboBoxStateHelper.GetLevels(),
                     "SchoolLevelID", "Description");
 
-            ViewBag.StateID = 
+            ViewBag.StateID =
                 new SelectList(
-                    ComboBoxStateHelper.GetStates(), 
+                    ComboBoxStateHelper.GetStates(),
                     "StateID", "Name");
 
             return View();
         }
 
-        // POST: Pacients/Create
+        // POST: Pacients/Create.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Pacient pacient)
@@ -150,148 +154,87 @@
                 {
                     return RedirectToAction("Index");
                 }
-
-                if (pacient.PhotoFile != null)
-                {
-                    var folder = "~/Content/Photos";
-
-                    var file = string.Format("{0}.jpg",
-                            pacient.PacientID);
-
-                    var response2 =
-                        FileImageUpLoad.
-                        UploadPhoto(
-                            pacient.
-                            PhotoFile,
-                            folder,
-                            file);
-
-                    if (response2)
-                    {
-                        var pic = string.
-                          Format("{0}/{1}",
-                          folder, file);
-
-                        pacient.Photo = pic;
-
-                        db.Entry(pacient).State =
-                            EntityState.Modified;
-
-                        db.SaveChanges();
-                    }
-                }
-
-                if (pacient.FirmFile != null)
-                {
-                    var folder2 = "~/Content/Firms";
-
-                    var file2 = string.Format("{0}.jpg",
-                            pacient.PacientID);
-
-                    var response3 =
-                        FirmImageUpLoad.
-                        UploadFirm(
-                            pacient.
-                            FirmFile,
-                            folder2,
-                            file2);
-
-                    if (response3)
-                    {
-                        var pic2 = string.
-                          Format("{0}/{1}",
-                          folder2, file2);
-
-                        pacient.Firm = pic2;
-
-                        db.Entry(pacient).State =
-                            EntityState.Modified;
-
-                        //db.SaveChanges();
-                    }
-                }
-
-                
             }
 
-            ViewBag.AfpeID = 
+            ViewBag.AfpeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetAfpes(), 
-                    "AfpeID", "Description", 
+                    ComboBoxStateHelper.GetAfpes(),
+                    "AfpeID", "Description",
                     pacient.AfpeID);
 
-            ViewBag.ArprID = 
+            ViewBag.ArprID =
                 new SelectList(
-                    ComboBoxStateHelper.GetArps(), 
-                    "ArprID", "Description", 
+                    ComboBoxStateHelper.GetArps(),
+                    "ArprID", "Description",
                     pacient.ArprID);
 
-            ViewBag.CityID = 
+            ViewBag.CityID =
                 new SelectList(
                     ComboBoxStateHelper.
-                    GetCities(pacient.StateID), 
-                    "CityID", "Name", 
+                    GetCities(pacient.StateID),
+                    "CityID", "Name",
                     pacient.CityID);
 
-            ViewBag.CivilID = 
+            ViewBag.CivilID =
                 new SelectList(
-                    ComboBoxStateHelper.GetCivils(), 
-                    "CivilID", "Description", 
+                    ComboBoxStateHelper.GetCivils(),
+                    "CivilID", "Description",
                     pacient.CivilID);
 
-            ViewBag.DocumentTypeID = 
+            ViewBag.DocumentTypeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetDocumentTypes(), 
-                    "DocumentTypeID", "Description", 
+                    ComboBoxStateHelper.GetDocumentTypes(),
+                    "DocumentTypeID", "Description",
                     pacient.DocumentTypeID);
 
-            ViewBag.DriveLicenseID = 
+            ViewBag.DriveLicenseID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLicenses(), 
-                    "DriveLicenseID", "Description", 
+                    ComboBoxStateHelper.GetLicenses(),
+                    "DriveLicenseID", "Description",
                     pacient.DriveLicenseID);
 
-            ViewBag.EpsaID = 
+            ViewBag.EpsaID =
                 new SelectList(
-                    ComboBoxStateHelper.GetEpsas(), 
-                    "EpsaID", "Description", 
+                    ComboBoxStateHelper.GetEpsas(),
+                    "EpsaID", "Description",
                     pacient.EpsaID);
 
-            ViewBag.FactorRhID = 
+            ViewBag.FactorRhID =
                 new SelectList(
-                    ComboBoxStateHelper.GetFactors(), 
-                    "FactorRhID", "Description", 
+                    ComboBoxStateHelper.GetFactors(),
+                    "FactorRhID", "Description",
                     pacient.FactorRhID);
 
-            ViewBag.GenderID = 
+            ViewBag.GenderID =
                 new SelectList(
-                    ComboBoxStateHelper.GetGenders(), 
-                    "GenderID", "Description", 
+                    ComboBoxStateHelper.GetGenders(),
+                    "GenderID", "Description",
                     pacient.GenderID);
 
-            ViewBag.MilitaryServiceID = 
+            ViewBag.MilitaryServiceID =
                 new SelectList(
-                    ComboBoxStateHelper.GetMilitaries(), 
-                    "MilitaryServiceID", "Options", 
+                    ComboBoxStateHelper.GetMilitaries(),
+                    "MilitaryServiceID", "Options",
                     pacient.MilitaryServiceID);
 
-            ViewBag.ProfessionID = 
+            ViewBag.ProfessionID =
                 new SelectList(
-                    ComboBoxStateHelper.GetProfessions(), 
-                    "ProfessionID", "Description", 
+                    ComboBoxStateHelper.GetProfessions(),
+                    "ProfessionID", "Description",
                     pacient.ProfessionID);
 
-            ViewBag.SchoolLevelID = 
+            ViewBag.SchoolLevelID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLevels(), 
-                    "SchoolLevelID", "Description", 
+                    ComboBoxStateHelper.GetLevels(),
+                    "SchoolLevelID", "Description",
                     pacient.SchoolLevelID);
 
-            ViewBag.StateID = 
+            ViewBag.StateID =
                 new SelectList(
-                    ComboBoxStateHelper.GetStates(), 
-                    "StateID", "Name", 
+                    ComboBoxStateHelper.GetStates(),
+                    "StateID", "Name",
                     pacient.StateID);
+
 
             return View(pacient);
         }
@@ -314,145 +257,95 @@
 
             ViewBag.AfpeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetAfpes(), 
+                    ComboBoxStateHelper.GetAfpes(),
                     "AfpeID", "Description",
                     pacient.AfpeID);
 
             ViewBag.ArprID =
                 new SelectList(
-                    ComboBoxStateHelper.GetArps(), 
+                    ComboBoxStateHelper.GetArps(),
                     "ArprID", "Description",
                     pacient.ArprID);
 
             ViewBag.CityID =
                 new SelectList(
                     ComboBoxStateHelper.
-                    GetCities(pacient.StateID), 
+                    GetCities(pacient.StateID),
                     "CityID", "Name",
                     pacient.CityID);
 
             ViewBag.CivilID =
                 new SelectList(
-                    ComboBoxStateHelper.GetCivils(), 
+                    ComboBoxStateHelper.GetCivils(),
                     "CivilID", "Description",
                     pacient.CivilID);
 
             ViewBag.DocumentTypeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetDocumentTypes(), 
+                    ComboBoxStateHelper.GetDocumentTypes(),
                     "DocumentTypeID", "Description",
                     pacient.DocumentTypeID);
 
             ViewBag.DriveLicenseID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLicenses(), 
+                    ComboBoxStateHelper.GetLicenses(),
                     "DriveLicenseID", "Description",
                     pacient.DriveLicenseID);
 
             ViewBag.EpsaID =
                 new SelectList(
-                    ComboBoxStateHelper.GetEpsas(), 
+                    ComboBoxStateHelper.GetEpsas(),
                     "EpsaID", "Description",
                     pacient.EpsaID);
 
             ViewBag.FactorRhID =
                 new SelectList(
-                    ComboBoxStateHelper.GetFactors(), 
+                    ComboBoxStateHelper.GetFactors(),
                     "FactorRhID", "Description",
                     pacient.FactorRhID);
 
             ViewBag.GenderID =
                 new SelectList(
-                    ComboBoxStateHelper.GetGenders(), 
+                    ComboBoxStateHelper.GetGenders(),
                     "GenderID", "Description",
                     pacient.GenderID);
 
             ViewBag.MilitaryServiceID =
                 new SelectList(
-                    ComboBoxStateHelper.GetMilitaries(), 
+                    ComboBoxStateHelper.GetMilitaries(),
                     "MilitaryServiceID", "Options",
                     pacient.MilitaryServiceID);
 
             ViewBag.ProfessionID =
                 new SelectList(
-                    ComboBoxStateHelper.GetProfessions(), 
+                    ComboBoxStateHelper.GetProfessions(),
                     "ProfessionID", "Description",
                     pacient.ProfessionID);
 
             ViewBag.SchoolLevelID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLevels(), 
+                    ComboBoxStateHelper.GetLevels(),
                     "SchoolLevelID", "Description",
                     pacient.SchoolLevelID);
 
             ViewBag.StateID =
                 new SelectList(
-                    ComboBoxStateHelper.GetStates(), 
+                    ComboBoxStateHelper.GetStates(),
                     "StateID", "Name",
                     pacient.StateID);
 
             return View(pacient);
         }
 
-        // POST: Pacients/Edit/5
+        // POST: Pacients/Edit/5.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Pacient pacient)
         {
             if (ModelState.IsValid)
-            {              
-
-                if (pacient.PhotoFile != null)
-                {                  
-
-                    var folder = "~/Content/Photos";
-
-                    var file = string.Format("{0}.jpg", pacient.PacientID);
-
-                    var response2 =
-                        FileImageUpLoad.
-                        UploadPhoto(
-                            pacient.
-                            PhotoFile,
-                            folder,
-                            file);
-
-                    if (response2)
-                    {
-                        var pic = string.Format("{0}/{1}",
-                          folder, file);
-
-                        pacient.Photo = pic;
-                    }
-                } 
-
-                if (pacient.FirmFile != null)
-                {                    
-                    var folder2 = "~/Content/Firms";
-
-                    var file2 = 
-                        string.Format("{0}.jpg", 
-                        pacient.PacientID);
-
-                    var response3 =
-                        FirmImageUpLoad.
-                        UploadFirm(
-                            pacient.
-                            FirmFile,
-                            folder2,
-                            file2);
-
-                    if (response3)
-                    {
-                        var pic2 = string.Format("{0}/{1}",
-                        folder2, file2);
-
-                        pacient.Firm = pic2;
-                    }
-                }
-                
-                db.Entry(pacient).
-                    State = EntityState.Modified;
+            {
+                db.Entry(pacient).State = 
+                    EntityState.Modified;
 
                 var response =
                     DBHelper.SaveChanges(db);
@@ -465,85 +358,85 @@
                 ModelState.
                     AddModelError(
                     string.Empty,
-                    response.Message);
+                    response.Message);                
             }
 
             ViewBag.AfpeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetAfpes(), 
+                    ComboBoxStateHelper.GetAfpes(),
                     "AfpeID", "Description",
                     pacient.AfpeID);
 
             ViewBag.ArprID =
                 new SelectList(
-                    ComboBoxStateHelper.GetArps(), 
+                    ComboBoxStateHelper.GetArps(),
                     "ArprID", "Description",
                     pacient.ArprID);
 
             ViewBag.CityID =
                 new SelectList(
                     ComboBoxStateHelper.
-                    GetCities(pacient.StateID), 
+                    GetCities(pacient.StateID),
                     "CityID", "Name",
                     pacient.CityID);
 
             ViewBag.CivilID =
                 new SelectList(
-                    ComboBoxStateHelper.GetCivils(), 
+                    ComboBoxStateHelper.GetCivils(),
                     "CivilID", "Description",
                     pacient.CivilID);
 
             ViewBag.DocumentTypeID =
                 new SelectList(
-                    ComboBoxStateHelper.GetDocumentTypes(), 
+                    ComboBoxStateHelper.GetDocumentTypes(),
                     "DocumentTypeID", "Description",
                     pacient.DocumentTypeID);
 
             ViewBag.DriveLicenseID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLicenses(), 
+                    ComboBoxStateHelper.GetLicenses(),
                     "DriveLicenseID", "Description",
                     pacient.DriveLicenseID);
 
             ViewBag.EpsaID =
                 new SelectList(
-                    ComboBoxStateHelper.GetEpsas(), 
+                    ComboBoxStateHelper.GetEpsas(),
                     "EpsaID", "Description",
                     pacient.EpsaID);
 
             ViewBag.FactorRhID =
                 new SelectList(
-                    ComboBoxStateHelper.GetFactors(), 
+                    ComboBoxStateHelper.GetFactors(),
                     "FactorRhID", "Description",
                     pacient.FactorRhID);
 
             ViewBag.GenderID =
                 new SelectList(
-                    ComboBoxStateHelper.GetGenders(), 
+                    ComboBoxStateHelper.GetGenders(),
                     "GenderID", "Description",
                     pacient.GenderID);
 
             ViewBag.MilitaryServiceID =
                 new SelectList(
-                    ComboBoxStateHelper.GetMilitaries(), 
+                    ComboBoxStateHelper.GetMilitaries(),
                     "MilitaryServiceID", "Options",
                     pacient.MilitaryServiceID);
 
             ViewBag.ProfessionID =
                 new SelectList(
-                    ComboBoxStateHelper.GetProfessions(), 
+                    ComboBoxStateHelper.GetProfessions(),
                     "ProfessionID", "Description",
                     pacient.ProfessionID);
 
             ViewBag.SchoolLevelID =
                 new SelectList(
-                    ComboBoxStateHelper.GetLevels(), 
+                    ComboBoxStateHelper.GetLevels(),
                     "SchoolLevelID", "Description",
                     pacient.SchoolLevelID);
 
             ViewBag.StateID =
                 new SelectList(
-                    ComboBoxStateHelper.GetStates(), 
+                    ComboBoxStateHelper.GetStates(),
                     "StateID", "Name",
                     pacient.StateID);
 
@@ -574,8 +467,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var pacient = 
-                db.Pacients.Find(id);
+            var pacient = db.Pacients.Find(id);
 
             db.Pacients.Remove(pacient);
 

@@ -1,402 +1,272 @@
 ﻿@model sisoC.Models.Pacient
 
 @{
-    ViewBag.Title = "Eliminar";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Eliminar Registro</h2>
+<h2>Delete</h2>
 
-<h3>¿Está seguro de Querer Eliminar el Registro Seleccionado?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Pacientes</h4>
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <h4>Pacient</h4>
     <hr />
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DocumentType.Description)
-                    </dt>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Afpe.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.DocumentType.Description)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Document)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Afpe.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Document)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Gender.Description)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Arpr.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Gender.Description)
-                    </dd>
-                </dl>
-            </div>
-        </div>        
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Arpr.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.FirstName)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.LastName)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.BirthDay)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.BirthDay)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.BirthPlace)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Civil.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.BirthPlace)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Civil.Description)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Civil.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Civil.Description)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Family)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentType.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Family)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.FactorRh.Description)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DocumentType.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.FactorRh.Description)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.SchoolLevel.Description)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.DriveLicense.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.SchoolLevel.Description)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Profession.Description)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DriveLicense.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Profession.Description)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.TimeProfession)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Epsa.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.TimeProfession)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Possition)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Epsa.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Possition)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.OldMount)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.FactorRh.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.OldMount)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.OldYear)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FactorRh.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.OldYear)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Military.Options)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Military.Options)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DriveLicense.Description)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gender.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.DriveLicense.Description)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Address)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Military.Options)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Address)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.State.Name)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Military.Options)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.State.Name)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.City.Name)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Profession.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.City.Name)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Phone)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Profession.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Phone)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Movil1)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolLevel.Description)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Movil1)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Movil2)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SchoolLevel.Description)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Movil2)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.EMail)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.State.Name)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.EMail)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Epsa.Description)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State.Name)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Epsa.Description)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Arpr.Description)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Document)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Arpr.Description)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Afpe.Description)
-                    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Document)
+        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Afpe.Description)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Photo)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
 
-                    <dd>
-                        @if (!string.IsNullOrEmpty(Model.Photo))
-                        {
-                            <img src="@Url.Content(Model.Photo)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
-                        }
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
 
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-4">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Firm)
-                    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
 
-                    <dd>
-                        @if (!string.IsNullOrEmpty(Model.Firm))
-                        {
-                            <img src="@Url.Content(Model.Firm)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
-                        }
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
 
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDay)
+        </dt>
 
-    @using (Html.BeginForm())
-    {
+        <dd>
+            @Html.DisplayFor(model => model.BirthDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthPlace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthPlace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Family)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Family)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeProfession)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeProfession)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Possition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Possition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OldMount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OldMount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OldYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OldYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movil1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movil1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movil2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movil2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PawPrint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PawPrint)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar Registro" class="btn btn-danger btn-lg" /> |
-            @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-success btn-lg" })
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>
